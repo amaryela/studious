@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Judson:wght@400;700&display=swap");
+body {
+  font-family: "Judson", serif;
+  overflow-x: hidden;
+}
+html {
+  scroll-behavior: smooth;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Archivo Black", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+.quiz {
+  min-height: 530px;
+}
+.rank {
+  min-height: 530px;
+}
+
+.choices{
+  display: inline-block;
+  width: 300px;
+  min-height: 35px;
+  border-radius: 20px;
+  text-align: left;
+  border: 1px solid #212529;
+}
+.choices:hover{
+  background-color: #212529;
+  color: #fff;
+}
+.choices:focus{
+  background-color: #ffc107;
+  border: 1px solid #ffc107;
+  color: #fff;
+}
+
+.answer{
+  display: inline-block;
+  min-width: 300px;
+  border-radius: 20px;
+  text-align: left;
+  border: 1px solid #212529;
+}
+
+.questPic{
+  display: flex;
+  margin: auto;
+}
+
+.pop{
+  display: inline-block;
+}
+
+.ans{
+  display: inline-block;
+  min-width: 200px;
+}

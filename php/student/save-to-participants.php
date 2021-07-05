@@ -16,8 +16,6 @@ if(isset($_POST['takequiz'])){
 $stat = mysqli_query($conn, "SELECT `status` FROM `scheduledquizzes` WHERE quiz_code = '$quiz_code' AND quiz_roomcode = '$room_code'");
 $sd = mysqli_fetch_assoc($stat);
 if ($sd['status'] == "set"){
-	
-	// echo "<script>alert('THE QUIZ HASNT STARTED YET');window.location='studRoom.php?next=$room_code';</script>";
 	echo "<script>window.location='studRoom.php?next=$room_code';</script>";
 }else{
 
@@ -29,8 +27,6 @@ if ($sd['status'] == "set"){
 
 		$checkExist = mysqli_query($conn, "SELECT * FROM  `quizaccess` WHERE quiz_takerID = '$user_id' AND q_code = '$quiz_code'");
 		if ($ce = mysqli_num_rows($checkExist) == 1){
-
-			// echo "<script>alert('WELCOME!');window.location='s-quiz-room.php?next=$sq_id';</script>";
 			echo "<script>window.location='s-quiz-room.php?next=$sq_id';</script>";
 		}	else{
 
@@ -39,8 +35,6 @@ if ($sd['status'] == "set"){
 	$check_ = mysqli_query($conn,$sql);
 
 		if($check_){
-
-			// echo "<script>alert('WELCOME!');window.location='s-quiz-room.php?next=$sq_id';</script>";
 			echo "<script>window.location='s-quiz-room.php?next=$sq_id';</script>";
 		}}	
 	}

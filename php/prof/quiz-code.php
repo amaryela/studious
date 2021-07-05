@@ -67,13 +67,6 @@ if(isset($_POST['idenSave'])){
 
 	$imgIDEN = "../../img/questPics/".$_FILES['imgIDEN']['name'];
 
-	// $imgIDEN = $_FILES['imgIDEN']['name'];
-	// if(empty($_POST['imgIDEN'])){
-	// 	$imgIDEN = " ";
-	// }else{
-	// 	$imgIDEN = "../../img/questPics/".$_FILES['imgIDEN']['name'];
-	// }
-
 	$qsql="INSERT INTO `questions`(`quiz_code`,`question_template`,`point`,`status`) VALUES ('".$codee."','".$tmplt."','".$idenPnt."','".$stats."')";
 	$check_reg = mysqli_query($conn,$qsql);
 
@@ -146,7 +139,6 @@ if(isset($_POST['enusave'])){
 
 		if($check_){
 			echo "<script>window.location='makeQuiz.php?next=$codee';</script>";
-			// echo "<script>alert('ADDED SUCCESSFULLY');window.location='makeQuiz.php?next=$codee';</script>";
 		}
 	}
 }
@@ -171,6 +163,5 @@ if(isset($_POST['publish'])){
         if($check_reg){
 					echo "<script>window.location='profRoom.php?next=$roomcode';</script>";
         }
-}
-
+	}
 ?>

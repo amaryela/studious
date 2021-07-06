@@ -124,7 +124,7 @@ $del_iden_id = $_POST['del_iden_id'];
     }
 
     $enuUpdate = "UPDATE `enumeration` SET `item_question`='$enuQuest',`choice_a`='$text1',`choice_b`='$text2',`choice_c`='$text3',`choice_d`='$text4',`choice_e`='$text5',`check_a`='$enu1',`check_b`='$enu2',`check_c`='$enu3',`check_d`='$enu4',`check_e`='$enu5',`item_point`='$enuPnt',`item_timer`='$enuTime',`item_img`='$imgENU' WHERE id = '$edit_enu_id'";
-   $result = mysqli_query($conn, $enuUpdate);
+    $result = mysqli_query($conn, $enuUpdate);
 
    if ($result){
        move_uploaded_file($_FILES['new_imgENU']['tmp_name'], $imgENU);

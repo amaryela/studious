@@ -1,5 +1,4 @@
 <?php
-
 $servername = "remotemysql.com"; 
 $database 	= "nWajPpcVbX"; 
 $dbname 	= "nWajPpcVbX"; 
@@ -17,5 +16,4 @@ $dbpass, $database);
 if ($conn === false){
 	die ("CONNECTION ERROR".mysqli_connect_error());
 }
-
 ?>

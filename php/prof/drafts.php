@@ -11,7 +11,7 @@ if (empty($_SESSION['id'])){
 if (isset($_GET['next'])) {
   $id = $_GET['next'];
 
-$find = "SELECT * FROM quiz WHERE status = 'set' AND quiz_owner = '$userid' AND quiz_roomcode = '$id'";
+$find = "SELECT * FROM quiz WHERE status = 'gen' AND quiz_owner = '$userid' AND quiz_roomcode = '$id'";
 $result = mysqli_query($conn,$find);
 }
 ?>

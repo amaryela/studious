@@ -67,7 +67,7 @@ if(isset($_POST['idenSave'])){
 
 	$imgIDEN = "../../img/questPics/".$_FILES['imgIDEN']['name'];
 
-	$qsql="INSERT INTO `questions`(`quiz_code`,`question_template`,`point`,`status`) VALUES ('".$codee."','".$tmplt."','".$idenPnt."','".$stats."')";
+	$qsql = "INSERT INTO `questions`(`quiz_code`,`question_template`,`point`,`status`) VALUES ('".$codee."','".$tmplt."','".$idenPnt."','".$stats."')";
 	$check_reg = mysqli_query($conn,$qsql);
 
 	if($check_reg){
@@ -75,7 +75,7 @@ if(isset($_POST['idenSave'])){
 
 		move_uploaded_file($_FILES['imgIDEN']['tmp_name'], $imgIDEN);
 
-		$reg_sql = "INSERT INTO `identification`(`quiz_code`,`quiz_name`,`item_question`, `answer_a`, `item_timer`, `item_point`, `item_img`, `item_number`)  VALUES ('".$codee."','".$idenQuest."','".$idenAns."','".$idenTime."','".$idenPnt."','".$imgIDEN."','".$itemn."')";
+		$reg_sql = "INSERT INTO `identification`(`quiz_code`,`quiz_name`,`item_question`, `answer_a`, `item_timer`, `item_point`, `item_img`, `item_number`)  VALUES ('".$codee."','".$name."','".$idenQuest."','".$idenAns."','".$idenTime."','".$idenPnt."','".$imgIDEN."','".$itemn."')";
 		$check_ = mysqli_query($conn,$reg_sql);
 
 		if($check_){
@@ -134,7 +134,7 @@ if(isset($_POST['enusave'])){
 
 		move_uploaded_file($_FILES['imgENU']['tmp_name'], $imgENU);
 
-		$sql = "INSERT INTO `enumeration`(`quiz_code`,`quiz_name`, `item_question`, `choice_a`, `check_a`, `choice_b`, `check_b`, `choice_c`, `check_c`, `choice_d`, `check_d`, `choice_e`, `check_e`, `item_timer`, `item_point`, `item_img`, `item_number`)  VALUES ('".$codee."','".$question."','".$text1."','".$enu1."','".$text2."','".$enu2."','".$text3."','".$enu3."','".$text4."','".$enu4."','".$text5."','".$enu5."','".$timer."','".$point."', '".$imgENU."', '".$itemn."')";
+		$sql = "INSERT INTO `enumeration`(`quiz_code`,`quiz_name`, `item_question`, `choice_a`, `check_a`, `choice_b`, `check_b`, `choice_c`, `check_c`, `choice_d`, `check_d`, `choice_e`, `check_e`, `item_timer`, `item_point`, `item_img`, `item_number`)  VALUES ('".$codee."','".$name."','".$question."','".$text1."','".$enu1."','".$text2."','".$enu2."','".$text3."','".$enu3."','".$text4."','".$enu4."','".$text5."','".$enu5."','".$timer."','".$point."', '".$imgENU."', '".$itemn."')";
 		$check_ = mysqli_query($conn,$sql);
 
 		if($check_){
@@ -150,18 +150,23 @@ if(isset($_POST['publish'])){
   $p_time= $_POST['time'];
   $qcode= $_POST['quizcode'];
 	$name= $_POST['quizname'];
-  
-  $result = mysqli_query($conn , "SELECT * FROM `quiz` WHERE `quiz_code`='$qcode'");
-  $row = mysqli_fetch_assoc($result);
-  
-  $roomcode = $row['quiz_roomcode'];
+	$stat = "pub";
 
-		$sql = "INSERT INTO `scheduledquizzes`(`quiz_code`, `quiz_name`, `quiz_roomcode`, `quiz_date`, `quiz_time`, `status`) VALUES ('".$qcode."','".$name."','".$roomcode."','".$p_date."','".$p_time."','".$p_status."')";
+	$up = "UPDATE quiz SET `status`='$stat' WHERE `quiz_code`='$qcode'";
+	$show = mysqli_query($conn, $up);
+	
+		if ($show){
+			$result = mysqli_query($conn , "SELECT * FROM `quiz` WHERE `quiz_code`='$qcode'");
+			$row = mysqli_fetch_assoc($result);
+  		$roomcode = $row['quiz_roomcode'];
+
+			$sql = "INSERT INTO `scheduledquizzes`(`quiz_code`, `quiz_name`, `quiz_roomcode`, `quiz_date`, `quiz_time`, `status`) VALUES ('".$qcode."','".$name."','".$roomcode."','".$p_date."','".$p_time."','".$p_status."')";
 
         $check_reg = mysqli_query($conn,$sql);
 
         if($check_reg){
 					echo "<script>window.location='profRoom.php?next=$roomcode';</script>";
         }
+		}
 	}
 ?>

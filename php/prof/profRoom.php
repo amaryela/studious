@@ -21,7 +21,7 @@ if (empty($_SESSION['id'])){
     $quizn= $_POST['qzn'];
     $qcode= $_POST['gencode'];
     $roomcode = $_POST['rmcode'];
-    $stats = "set";
+    $stats = "gen";
 
 
     $sql = "INSERT INTO `quiz`(`quiz_code` , `quiz_name` , `quiz_roomcode`, `quiz_owner`, `status`) 

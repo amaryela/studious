@@ -44,10 +44,10 @@ if(isset($_POST['launch'])){
 				$readyQ = mysqli_query($conn, $readyUp);
 		 if($readyQ){
 				
-	//UPDATE STATUS FROM QUIZ TABLE
-				 $quizStatus="UPDATE `quiz` SET status = '$State' WHERE `quiz_code` = '$q_code' AND quiz_roomcode ='$r_code'";
-				 $quizResult = mysqli_query($conn, $quizStatus);	
-				 if($quizResult){
+	//UPDATE STATUS FROM QUIZ TABLE di na need
+				//  $quizStatus="UPDATE `quiz` SET status = '$State' WHERE `quiz_code` = '$q_code' AND quiz_roomcode ='$r_code'";
+				//  $quizResult = mysqli_query($conn, $quizStatus);	
+				//  if($quizResult){
 	
 	//GET ID FROM SCHEDULEDQUIZZES 
 					 $sched = "SELECT * FROM `scheduledquizzes` WHERE `quiz_code` = '$q_code' AND quiz_roomcode ='$r_code'";
@@ -57,7 +57,7 @@ if(isset($_POST['launch'])){
 						 $_SESSION["sched_id"] = $sq_id;
 					 
 					 echo "<script>alert('QUIZ STARTED!');window.location='on-going-quiz.php?next=$sq_id';</script>";
-			}
+			// }
 		}
 	}
 }

@@ -5,13 +5,13 @@ include '../include/config.php';
 if(isset($_POST['edit_id'])){
     $id = $_POST['edit_id'];
 
-    $sql = "SELECT * FROM multiplechoice WHERE id = '$id'";
+    $sql = "SELECT * FROM multiplechoice WHERE item_number = '$id'";
     $result = mysqli_query($conn, $sql);
     while ($mc = mysqli_fetch_array($result)){
 ?>
 
         <div class="modal-info">
-        <input type="hidden" name="edit_id" value="<?php echo $mc['id']; ?>">
+        <input type="hidden" name="edit_id" value="<?php echo $mc['item_number']; ?>">
         <div class="tempIMG mb-4 p-3">
             <div class="row">
                 <div class="col-sm">
@@ -93,13 +93,13 @@ if(isset($_POST['edit_id'])){
 if(isset($_POST['del_id'])){
     $id = $_POST['del_id'];
 
-    $sql = "SELECT * FROM multiplechoice WHERE id = '$id'";
+    $sql = "SELECT * FROM multiplechoice WHERE item_number = '$id'";
     $result = mysqli_query($conn, $sql);
     while ($mc = mysqli_fetch_array($result)){
 ?>
     <h5 class="modal-title" style="margin-bottom:20px;">CONFIRM DELETE</h5>
     <p style="font-size:18px;">Are you sure you want to delete this item?</p>
-    <input type="number" name="del_id" value="<?php echo $mc['id'];?>">
+    <input type="number" name="del_id" value="<?php echo $mc['item_number'];?>">
 
 <?php
 }
@@ -112,12 +112,12 @@ if(isset($_POST['del_id'])){
 if(isset($_POST['edit_iden_id'])){
     $id = $_POST['edit_iden_id'];
 
-    $sql = "SELECT * FROM identification WHERE id = '$id'";
+    $sql = "SELECT * FROM identification WHERE item_number = '$id'";
     $result = mysqli_query($conn, $sql);
     while ($iden = mysqli_fetch_array($result)){
 ?>
     <div class="modal-info">
-        <input type="hidden" name="edit_iden_id" value="<?php echo $iden['id']; ?>">
+        <input type="hidden" name="edit_iden_id" value="<?php echo $iden['item_number']; ?>">
         <div class="tempIMG mb-4 p-3">
             <div class="row">
                 <div class="col-sm">
@@ -164,13 +164,13 @@ if(isset($_POST['edit_iden_id'])){
 if(isset($_POST['del_iden_id'])){
     $idi = $_POST['del_iden_id'];
 
-    $sql = "SELECT * FROM identification WHERE id = '$idi'";
+    $sql = "SELECT * FROM identification WHERE item_number = '$idi'";
     $result = mysqli_query($conn, $sql);
     while ($iden = mysqli_fetch_array($result)){
 ?>
     <h5 class="modal-title" style="margin-bottom:20px;">CONFIRM DELETE</h5>
     <p style="font-size:18px;">Are you sure you want to delete this item?</p>
-    <input type="number" name="del_iden_id" value="<?php echo $iden['id'];?>">
+    <input type="number" name="del_iden_id" value="<?php echo $iden['item_number'];?>">
 
 <?php
 }
@@ -183,13 +183,13 @@ if(isset($_POST['del_iden_id'])){
 if(isset($_POST['edit_enu_id'])){
     $ide = $_POST['edit_enu_id'];
 
-    $sql = "SELECT * FROM enumeration WHERE id = '$ide'";
+    $sql = "SELECT * FROM enumeration WHERE item_number = '$ide'";
     $result = mysqli_query($conn, $sql);
     while ($enu = mysqli_fetch_array($result)){
 ?>
     
     <div class="modal-info">
-        <input type="hidden" name="edit_enu_id" value="<?php echo $enu['id']; ?>">
+        <input type="hidden" name="edit_enu_id" value="<?php echo $enu['item_number']; ?>">
 
         <div class="tempIMG mb-4 p-3">
             <div class="row">
@@ -300,13 +300,13 @@ if(isset($_POST['edit_enu_id'])){
 if(isset($_POST['del_enu_id'])){
     $idi = $_POST['del_enu_id'];
 
-    $sql = "SELECT * FROM enumeration WHERE id = '$idi'";
+    $sql = "SELECT * FROM enumeration WHERE item_number = '$idi'";
     $result = mysqli_query($conn, $sql);
     while ($enu = mysqli_fetch_array($result)){
 ?>
     <h5 class="modal-title" style="margin-bottom:20px;">CONFIRM DELETE</h5>
     <p style="font-size:18px;">Are you sure you want to delete this item?</p>
-    <input type="number" name="del_enu_id" value="<?php echo $enu['id'];?>">
+    <input type="number" name="del_enu_id" value="<?php echo $enu['item_number'];?>">
 
 <?php
     }

@@ -124,10 +124,9 @@ if(isset($_POST['enusave'])){
 	$stats = "set";
 
 	$imgENU = "../../img/questPics/".$_FILES['imgENU']['name'];
-	$stat = "set";
 
-	$qsql="INSERT INTO `questions`(`quiz_code`,`question_template`,`point`,`status`) VALUES ('".$codee."','".$tmplt."','".$point."','".$stats."')";
-	$check_reg = mysqli_query($conn,$qsql);
+	$qsql = "INSERT INTO `questions`(`quiz_code`,`question_template`,`point`,`status`) VALUES ('".$codee."','".$tmplt."','".$point."','".$stats."')";
+	$check_reg = mysqli_query($conn, $qsql);
 
 	if($check_reg){
 		$itemn = mysqli_insert_id($conn);

@@ -2,8 +2,7 @@
 include '../include/config.php';
 include '../q-functions.php';
 session_start();
-
-error_reporting(E_ALL ^ E_WARNING); 
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 
 $userid = $_SESSION['id'];
 

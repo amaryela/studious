@@ -8,11 +8,11 @@ if (empty($_SESSION['id'])){
   header('Location: ../../index.php');
 }
 
-$schedule = $_SESSION['sched_id'];
-$quiz_code = $_SESSION["theCode"];
+$quiz_code = $_SESSION['theCode'];
 
-$sheesh = $_SESSION["status"]; 
-$rcode = $_SESSION["room_code"];
+// $sheesh = $_SESSION["status"]; 
+// $rcode = $_SESSION["room_code"];
+// $schedule = $_SESSION['sched_id'];
 
 ?>
 

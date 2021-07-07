@@ -286,11 +286,12 @@ $sresult = mysqli_query($conn, $squery);
       <img src="../../img/undraw_Faq_re_31cw.svg" alt="imgDes" height="200px">
     </div>
     <div class="col mt-5 p-5">
+      <h5 class="text-dark fw-bold result"></h5>
       <h5 class="text-warning">Current Score: </h5>
     </div>
   </div>
 
-<div class="result"></div>
+
 
 <script type="text/javascript">    
 //reload page
@@ -416,11 +417,12 @@ else if ($row['question_template'] == "enumeration") {
       <img src="../../img/undraw_Faq_re_31cw.svg" alt="imgDes" height="200px">
     </div>
     <div class="col mt-5 p-5">
+      <h5 class="text-dark fw-bold result"></h5>
       <h5 class="text-warning">Current Score: </h5>
     </div>
   </div>
 
-<div class="result"></div>
+
 
 <script type="text/javascript">
   function sampleFunction() {
@@ -487,11 +489,12 @@ else if ($row['question_template'] == "identification") {
       <img src="../../img/undraw_Faq_re_31cw.svg" alt="imgDes" height="200px">
     </div>
     <div class="col mt-5 p-5">
+      <h5 class="text-dark fw-bold result"></h5>
       <h5 class="text-warning">Current Score: </h5>
     </div>
   </div>
   
- <div class="result"></div>
+
 
 <script type="text/javascript">
   function sampleFunction() {
@@ -520,8 +523,8 @@ var downloadTimer = setInterval(function(){
 <!-- save answer for multiple choice A-->
 <script type="text/javascript">
   
-  $(document).ready(function () {
-    $('#subA').click(function (e) {
+  $(document).ready(function() {
+    $('#subA').click(function(e) {
       e.preventDefault();
         $( ".chh" ).prop( "disabled", true );
           var ansID = $('#ansA').val();
@@ -538,7 +541,7 @@ var downloadTimer = setInterval(function(){
           type: "POST",
           url: "loaders/s-answers.php",
           data: {"ansID": ansID, "status": status , "qst_ID": qst_ID , "template": template , "tempID": tempID , "userid": userid , "quiz_code": quiz_code , "point": point , "correctAns": correctAns},
-          success: function (data) {
+          success: function(data) {
             $('.result').html(data);
             $('#A_form')[0].reset();
           }
@@ -552,8 +555,8 @@ var downloadTimer = setInterval(function(){
 <!-- save answer for multiple choice B-->
 <script type="text/javascript">
   
-  $(document).ready(function () {
-    $('#subB').click(function (e) {
+  $(document).ready(function() {
+    $('#subB').click(function(e) {
       e.preventDefault();
         $( ".chh" ).prop( "disabled", true );
           var ansID = $('#ansB').val();
@@ -570,7 +573,7 @@ var downloadTimer = setInterval(function(){
           type: "POST",
           url: "loaders/s-answers.php",
           data: {"ansID": ansID, "status": status , "qst_ID": qst_ID , "template": template , "tempID": tempID , "userid": userid , "quiz_code": quiz_code , "point": point , "correctAns": correctAns},
-          success: function (data) {
+          success: function(data) {
             $('.result').html(data);
             $('#B_form')[0].reset();
           }
@@ -584,8 +587,8 @@ var downloadTimer = setInterval(function(){
 <!-- save answer for multiple choice C-->
 <script type="text/javascript">
   
-  $(document).ready(function () {
-    $('#subC').click(function (e) {
+  $(document).ready(function() {
+    $('#subC').click(function(e) {
         e.preventDefault();
         $( ".chh" ).prop( "disabled", true );
           var ansID = $('#ansC').val();
@@ -602,7 +605,7 @@ var downloadTimer = setInterval(function(){
           type: "POST",
           url: "loaders/s-answers.php",
           data: {"ansID": ansID, "status": status , "qst_ID": qst_ID , "template": template , "tempID": tempID , "userid": userid , "quiz_code": quiz_code , "point": point , "correctAns": correctAns},
-          success: function (data) {
+          success: function(data) {
             $('.result').html(data);
             $('#C_form')[0].reset();
           }
@@ -616,8 +619,8 @@ var downloadTimer = setInterval(function(){
 <!-- save answer for multiple choice D-->
 <script type="text/javascript">
   
-  $(document).ready(function () {
-    $('#subD').click(function (e) {
+  $(document).ready(function() {
+    $('#subD').click(function(e) {
       e.preventDefault();
         $( ".chh" ).prop( "disabled", true );
           var ansID = $('#ansD').val();
@@ -634,7 +637,7 @@ var downloadTimer = setInterval(function(){
           type: "POST",
           url: "loaders/s-answers.php",
           data: {"ansID": ansID, "status": status , "qst_ID": qst_ID , "template": template , "tempID": tempID , "userid": userid , "quiz_code": quiz_code , "point": point , "correctAns": correctAns},
-          success: function (data) {
+          success: function(data) {
             $('.result').html(data);
             $('#D_form')[0].reset();
           }
@@ -648,8 +651,8 @@ var downloadTimer = setInterval(function(){
 <!-- save answer for multiple choice E-->
 <script type="text/javascript">
   
-  $(document).ready(function () {
-    $('#subE').click(function (e) {
+  $(document).ready(function() {
+    $('#subE').click(function(e) {
       e.preventDefault();
         $( ".chh" ).prop( "disabled", true );
           var ansID = $('#ansE').val();
@@ -666,7 +669,7 @@ var downloadTimer = setInterval(function(){
           type: "POST",
           url: "loaders/s-answers.php",
           data: {"ansID": ansID, "status": status , "qst_ID": qst_ID , "template": template , "tempID": tempID , "userid": userid , "quiz_code": quiz_code , "point": point , "correctAns": correctAns},
-          success: function (data) {
+          success: function(data) {
             $('.result').html(data);
             $('#E_form')[0].reset();
           }
@@ -681,8 +684,8 @@ var downloadTimer = setInterval(function(){
 <!-- save answer for identification -->
 <script type="text/javascript">
   
-  $(document).ready(function () {
-    $('#submit').click(function (e) {
+  $(document).ready(function() {
+    $('#submit').click(function(e) {
       e.preventDefault();
         $( ".chh" ).prop( "disabled", true );
           var ansID = $('#answerID').val();
@@ -699,7 +702,7 @@ var downloadTimer = setInterval(function(){
           type: "POST",
           url: "loaders/s-answers.php",
           data: {"ansID": ansID, "status": status , "qst_ID": qst_ID , "template": template , "tempID": tempID , "userid": userid , "quiz_code": quiz_code , "point": point , "correctAns": correctAns},
-          success: function (data) {
+          success: function(data) {
             $('.result').html(data);
             $('#ansform')[0].reset();
           }
@@ -714,8 +717,8 @@ var downloadTimer = setInterval(function(){
 <!-- save answer for ENUMERATION-->
 <script type="text/javascript">
 
-  $(document).ready(function () {
-    $('#ENUsubmit').click(function (e) {
+  $(document).ready(function() {
+    $('#ENUsubmit').click(function(e) {
       e.preventDefault();
 
           var ae1 = document.getElementById("en1").checked;
@@ -743,7 +746,7 @@ var downloadTimer = setInterval(function(){
           type: "POST",
           url: "loaders/enumeration-save.php",
           data: {"txt1": txt1, "txt2": txt2, "txt3": txt3, "txt4": txt4, "txt5": txt5,  "ae1": ae1, "ae2": ae2, "ae3": ae3, "ae4": ae4, "ae5": ae5, "status": status , "qst_ID": qst_ID , "template": template , "tempID": tempID , "userid": userid , "quiz_code": quiz_code , "point": point , "correctAns": correctAns},
-          success: function (data) {
+          success: function(data) {
             $('.result').html(data);
             $('#enuForm')[0].reset();
           }

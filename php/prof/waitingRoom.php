@@ -51,8 +51,7 @@ if (empty($_SESSION['id'])){
           
             <div class="row">
               <div class="col">
-              <p>Room: <?php echo $s_row['quiz_roomcode'];?> <br>
-              Schedule: <?php echo $s_row['quiz_date'] . "/" . $s_row['quiz_time']; }?></p>
+                <p>Schedule: <?php echo date('F d, Y', strtotime($s_row['quiz_date'])). "&nbsp;-&nbsp;" .date('g:i a', strtotime($s_row['quiz_time'])); }?></p>
               </div>
               <div class="col">
                 <form action="launch-quiz.php" method="post">
@@ -61,8 +60,10 @@ if (empty($_SESSION['id'])){
                   <input type="hidden" name="quizname" value="<?php echo $row['quiz_name'];?>">
                   <input type="hidden" name="status" value="on-going">
                   
-                  <button type="submit" name="startquiz" class="btn btn-outline-dark"
-                  style="margin-top:20px;"><i class="fas fa-play-circle"></i>&emsp;START QUIZ</button>
+                    <button type="submit" class="btn btn-dark" name="startquiz" <?php if ($row['status'] == "finished"){ ?> disabled <?php } ?> ><i class="fas fa-play-circle"></i>&ensp;Start Quiz</button>
+
+                  <!-- <button type="submit" name="startquiz" class="btn btn-dark"
+                  style="margin-top:20px;"><i class="fas fa-play-circle"></i>&emsp;START QUIZ</button> -->
                 </form>
               </div>
             </div>

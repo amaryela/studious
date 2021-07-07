@@ -290,8 +290,8 @@ while ($row = mysqli_fetch_array($results)) {
             <p class="m-0">Set Time: <?php echo $mc['item_timer']; ?></p>
             <p class="m-0">Set Point: <?php echo $mc['item_point']; ?></p>
 
-            <button type="button" class="btn btn-warning text-white m-2 mcEdit" data-bs-toggle="modal" data-bs-target="#editMCmodal" id="<?php echo $mc['id']; ?>"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit</button>
-            <button type="button" class="btn btn-danger text-white m-2 mcDelete" data-bs-toggle="modal" data-bs-target="#deleteMCmodal" id="<?php echo $mc['id']; ?>"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Delete</button>
+            <button type="button" class="btn btn-warning text-white m-2 mcEdit" data-bs-toggle="modal" data-bs-target="#editMCmodal" id="<?php echo $mc['item_number']; ?>"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit</button>
+            <button type="button" class="btn btn-danger text-white m-2 mcDelete" data-bs-toggle="modal" data-bs-target="#deleteMCmodal" id="<?php echo $mc['item_number']; ?>"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Delete</button>
         </div>
 
 <!-- MC Edit Modal -->
@@ -360,8 +360,8 @@ else if ($row['question_template'] == "identification") {
         <p class="m-0">Set Time: <?php echo $iden['item_timer']; ?></p>
         <p class="m-0">Set Point: <?php echo $iden['item_point']; ?></p>
 
-        <button type="button" class="btn btn-warning text-white m-2 idenEdit" data-bs-toggle="modal" data-bs-target="#editIDENmodal" id="<?php echo $iden['id']; ?>"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit</button>
-        <button type="button" class="btn btn-danger text-white m-2 idenDelete" data-bs-toggle="modal" data-bs-target="#deleteIDENmodal" id="<?php echo $iden['id']; ?>"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Delete</button>
+        <button type="button" class="btn btn-warning text-white m-2 idenEdit" data-bs-toggle="modal" data-bs-target="#editIDENmodal" id="<?php echo $iden['item_number']; ?>"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit</button>
+        <button type="button" class="btn btn-danger text-white m-2 idenDelete" data-bs-toggle="modal" data-bs-target="#deleteIDENmodal" id="<?php echo $iden['item_number']; ?>"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Delete</button>
     </div>
 
 <!-- IDEN Edit Modal -->
@@ -468,8 +468,8 @@ elseif ($row['question_template'] == "enumeration") {
         <p class="m-0">Set Time: <?php echo $enu['item_timer']; ?></p>
         <p class="m-0">Set Point: <?php echo $enu['item_point']; ?></p>
 
-        <button type="button" class="btn btn-warning text-white m-2 enuEdit" data-bs-toggle="modal" data-bs-target="#editENUmodal" id="<?php echo $enu['id']; ?>"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit</button>
-        <button type="button" class="btn btn-danger text-white m-2 enuDelete" data-bs-toggle="modal" data-bs-target="#deleteENUmodal" id="<?php echo $enu['id']; ?>"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Delete</button>
+        <button type="button" class="btn btn-warning text-white m-2 enuEdit" data-bs-toggle="modal" data-bs-target="#editENUmodal" id="<?php echo $enu['item_number']; ?>"><i class="fas fa-edit"></i>&nbsp;&nbsp;Edit</button>
+        <button type="button" class="btn btn-danger text-white m-2 enuDelete" data-bs-toggle="modal" data-bs-target="#deleteENUmodal" id="<?php echo $enu['item_number']; ?>"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Delete</button>
     </div>
 
 <!-- ENUM Edit Modal -->

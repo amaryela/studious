@@ -1,6 +1,8 @@
 <?php
 include '../../include/config.php';
 session_start();
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+
 $userid = $_SESSION['id'];
 $quiz_code = $_SESSION["theCode"];
 $shced_id = $_SESSION['sched_id'];

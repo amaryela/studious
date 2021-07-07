@@ -61,13 +61,30 @@ if (empty($_SESSION['id'])){
       <br>
 
       <div class="row border border-3 border-warning rounded p-2">
+      <?php
+          $count = mysqli_query($conn, "SELECT * FROM scheduledquizzes WHERE quiz_roomcode = '$id' AND status = 'finished'");
+          $num_total = mysqli_num_rows($count);
+
+          $miss = mysqli_query($conn, "SELECT * FROM quizaccess WHERE q_roomcode = '$id' AND quiz_takerID = '$userid'");
+          $num_miss = mysqli_num_rows($miss);
+
+          if ($num_miss < $num_total){
+            $miss_total = $num_total - $num_miss;
+          }
+          else{
+            $miss_total = 0;
+          }
+          // $miss = mysqli_query($conn, "SELECT * FROM quizaccess WHERE q_roomcode = '$id' AND score = '' AND quiz_takerID = '$userid'");
+          // $num_miss = mysqli_num_rows($miss);
+      ?>
+
         <div class="col-sm text-center">
-          <h2>0</h2>
+          <h2><?php echo $miss_total;?></h2>
           <h5>Missed</h5>
         </div>
 
         <div class="col-sm text-center">
-          <h2>0</h2>
+          <h2><?php echo $num_total;?></h2>
           <h5>Total Quiz</h5>
         </div>
 
@@ -99,8 +116,6 @@ if (empty($_SESSION['id'])){
         <div class="row records">
           <div class="col-sm ps-3 pt-3">
             <h3><?php echo $data['quiz_name']; ?></h3>
-            <!-- <p style="font-size:15px"><?php echo $data['quiz_code']; ?></p> -->
-            
             <p style="font-size:15px;"><?php echo date('F d, Y', strtotime($data['quiz_date'])).
             "&emsp;-&emsp;".date('g:i a', strtotime($data['quiz_time'])); ?></p>
           </div>

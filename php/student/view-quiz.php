@@ -37,7 +37,7 @@ if (isset($_GET['next'])) {
     <?php include('../include/nav-stud.php'); ?>
 
 <?php        
-    $res = mysqli_query($conn, "select sum(point) from questions where quiz_code ='$id'");
+    $res = mysqli_query($conn, "SELECT sum(point) FROM questions WHERE quiz_code ='$id'");
     $rr = mysqli_fetch_row($res);
     $sum = $rr[0];
 
@@ -76,7 +76,7 @@ while ($row = mysqli_fetch_array($results)) {
         $mcANS  = mysqli_fetch_array($mcFetchANS);
 
         if (mysqli_num_rows($mcFetchANS)==0) {
-                $score = 0; ?>
+            $score = 0; ?>
 
 <div class="pb-4 border border-dark border-3 quest" style="width:50%;"><br>
     <div class="text-center">

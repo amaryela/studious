@@ -57,12 +57,12 @@ $result = mysqli_query($conn, $join);
 
         <div class="row justify-content-md-center records">
           <div class="col-sm p-3 ms-3" style="margin:auto;">
-            <h3 class="mb-3"><i class="fas fa-dot-circle"></i>&emsp;<?php echo $show['quiz_name'];?></h3>
+            <h3 class="mb-3"><?php echo $show['quiz_name'];?></h3>
             <p class="m-0" style="font-size:15px;">Scheduled by: <?php echo $show['quiz_date'];?></p>
           </div>
-          <div class="col-sm mt-3">
-            <a href="view-quiz.php?next=<?php echo $show['quiz_code']; ?>"><button type="button" class="btn btn-dark mb-3" id="<?php echo $schedrow['quiz_code']; ?>">View Quiz</button></a>
-            <p class="m-0" style="font-size:15px;">Score: <?php echo $show['score'];?></p>
+          <div class="col-sm text-center m-auto">
+            <a href="view-quiz.php?next=<?php echo $show['quiz_code']; ?>"><button type="button" class="btn btn-dark" id="<?php echo $schedrow['quiz_code']; ?>">View Quiz</button></a>
+            <p class="m-1" style="font-size:15px;">Score: <?php echo $show['score'];?></p>
           </div>
         </div><br>
         <?php } }?> <!-- end row loop -->

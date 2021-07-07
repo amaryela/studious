@@ -56,14 +56,14 @@ if (isset($_GET['next'])) {
 
         <div class="row justify-content-md-center records">
           <div class="col-sm p-3 ms-3" style="margin:auto;">
-            <h3 class="mb-3"><i class="fas fa-dot-circle"></i>&emsp;<?php echo $show['quiz_name'];?></h3>
+            <h3><?php echo $show['quiz_name'];?></h3>
             <p class="m-0" style="font-size:15px;">Schedule: <?php echo date('F d, Y', strtotime($show['quiz_date'])). "&emsp;-&emsp;".date('g:i a', strtotime($show['quiz_time'])); ?></p>
           </div>
           <div class="col-sm m-auto">
             <a href="view-quiz.php?next=<?php echo $show['quiz_code'];?>"><button type="button" class="btn btn-dark mb-3">View Quiz</button></a>
           </div>
         </div><br>
-        <?php } }?> <!-- end row loop -->
+        <?php } } ?> <!-- end row loop -->
 
   <!--Bootstrap Bundle-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

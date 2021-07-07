@@ -89,7 +89,7 @@ $runQ = "SELECT * FROM questions WHERE quiz_code = '$quiz_code' and status = 're
           </div>
 
           <div class="col">
-            <button class="btn btn-outline-warning m-3" type="submit" id="doneIDm" name="done"><i class="fas fa-check-circle"></i>&emsp;Show Answer to Students</button>
+            <button class="btn btn-outline-warning m-3" type="submit" id="doneIDM" name="done"><i class="fas fa-check-circle"></i>&emsp;Show Answer to Students</button>
             
             <button onclick="reloadPage()" type="submit" id="nextBthm" name="done" class="btn btn-outline-dark m-3" style="display:none;"><i class="fas fa-check-circle"></i>&emsp;Next Question</button>
             <!-- button style="display:none;" -->
@@ -122,18 +122,18 @@ $runQ = "SELECT * FROM questions WHERE quiz_code = '$quiz_code' and status = 're
             });
           });
 //NEXT btn SAVE TO DB  
-$("#doneIDm" ).prop("disabled", true ); //DONE BUTTON DISABLED
+$("#doneIDM" ).prop("disabled", true ); //DONE BUTTON DISABLED
 // QUIZ TIMER
 var timeleft =<?php echo $mc['item_timer']; ?>;
 var downloadTimer = setInterval(function(){
   if(timeleft <= 0){
     clearInterval(downloadTimer);
 
-$("#doneIDm" ).prop("disabled", false );
+$("#doneIDM" ).prop("disabled", false );
 
   //DONE SAVE TO DB
     $(document).ready(function () {
-    $('#doneIDm').click(function (e) {
+    $('#doneIDM').click(function (e) {
       e.preventDefault();
         $('#nextBthm').show();
             var status = $('#done_status').val();

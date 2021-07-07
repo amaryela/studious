@@ -10,7 +10,7 @@
            <i class="fas fa-bell circle-icon"><span class="num-notif">
             <?php
               $today = date("Y-m-d");
-              $join = mysqli_query($conn,"SELECT room.*, enrolleduser.*, scheduledquizzes.* FROM room JOIN enrolleduser ON room.roomCode=enrolleduser.roomID JOIN scheduledquizzes ON scheduledquizzes.quiz_roomcode = enrolleduser.roomID WHERE enrolleduser.enrolledUserID = '$userid' AND scheduledquizzes.quiz_date = '$today' AND room.status = 'on'");
+              $join = mysqli_query($conn,"SELECT room.*, enrolleduser.*, scheduledquizzes.* FROM room JOIN enrolleduser ON room.roomCode=enrolleduser.roomID JOIN scheduledquizzes ON scheduledquizzes.quiz_roomcode = enrolleduser.roomID WHERE enrolleduser.enrolledUserID = '$userid' AND scheduledquizzes.quiz_date = '$today' AND scheduledquizzes.status !='finished' AND room.status = 'on'");
               
               $num_rows = mysqli_num_rows($join);
               echo $num_rows;

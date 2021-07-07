@@ -46,7 +46,6 @@ if ($enu5 == "true"){
 	$ans5 = "";
 }
 
-
 	 $answerID = $ans1 . $ans2 .  $ans3 .  $ans4 .$ans5;
 	 $status = "done";
 	 $qst_ID = $_POST['qst_ID'];
@@ -62,20 +61,17 @@ $checkExist = mysqli_query($conn, "SELECT * FROM `ans` WHERE `quiz_code` = '$qui
 			echo "<script>alert('you have answered already!');</script>";
 		}	else{
 
-$enuans = "INSERT INTO `enumeration ans`(`quiz_code`, `quiz_id`, `user_id`, `choice_a`, `checked_a`, `choice_b`, `checked_b`, `choice_c`, `checked_c`, `choice_d`, `checked_d`, `choice_e`, `checked_e`) VALUES ('".$quizcode."', '".$qst_ID."' , '".$userid."' ,'".$en1."' ,'".$enu1."' ,'".$en2."' ,'".$enu2."' ,'".$en3."' ,'".$enu3."' ,'".$en4."' ,'".$enu4."' ,'".$en5."' ,'".$enu5."')";
-$check_enu = mysqli_query($conn,$enuans);
-
-		if($check_enu){
-
-if ($answerID !=  $correctAnswer){
-	 	$score = 0;
+			$enuans = "INSERT INTO `enumeration ans`(`quiz_code`, `quiz_id`, `user_id`, `choice_a`, `checked_a`, `choice_b`, `checked_b`, `choice_c`, `checked_c`, `choice_d`, `checked_d`, `choice_e`, `checked_e`) VALUES ('".$quizcode."', '".$qst_ID."' , '".$userid."' ,'".$en1."' ,'".$enu1."' ,'".$en2."' ,'".$enu2."' ,'".$en3."' ,'".$enu3."' ,'".$en4."' ,'".$enu4."' ,'".$en5."' ,'".$enu5."')";
+			$check_enu = mysqli_query($conn,$enuans);
+			
+			if($check_enu){
+				if ($answerID !=  $correctAnswer){
+					$score = 0;
 
 //insert answersif 
-		 mysqli_query($conn, "insert into ans (ans, template, question_id, user_id , quiz_code , score , status) values ('$answerID' , '$template' , '$qst_ID' , '$userid' , '$quizcode', '$score', '$status')"); 
+					mysqli_query($conn, "INSERT INTO ans (ans, template, question_id, user_id , quiz_code , score , status) VALUES ('$answerID' , '$template' , '$qst_ID' , '$userid' , '$quizcode', '$score', '$status')"); 
  
-
 //update quizaccess status if student is done answering
-
 	$total = mysqli_query($conn, "SELECT * FROM `quizaccess` WHERE `q_code` = '$quizcode' AND quiz_takerID ='$userid'");
 			$tr = mysqli_fetch_assoc($total);
  			$currentScore = $tr['score'];
@@ -86,18 +82,15 @@ if ($answerID !=  $correctAnswer){
 			$check_ = mysqli_query($conn,$sql);
 
 			if($check_){
-				 echo "YOUR ANSWER : ".$answerID."</br>";
+				echo "You answered: ".$answerID."</br>";
 			} 
 	 }
 
-
 	 if ($answerID == $correctAnswer){
-	 	$score = $item_point;
-
+		 $score = $item_point;
 //insert answers
-		 mysqli_query($conn, "insert into ans (ans, template, question_id, user_id , quiz_code , score , status) values ('$answerID' , '$template' , '$qst_ID' , '$userid' , '$quizcode', '$score', '$status')"); 
+		 mysqli_query($conn, "INSERT INTO ans (ans, template, question_id, user_id , quiz_code , score , status) VALUES ('$answerID' , '$template' , '$qst_ID' , '$userid' , '$quizcode', '$score', '$status')"); 
  
-
 //update quizaccess status if student is done answering
 			$total = mysqli_query($conn, "SELECT * FROM `quizaccess` WHERE `q_code` = '$quizcode' AND quiz_takerID ='$userid'");
 			$tr = mysqli_fetch_assoc($total);
@@ -105,11 +98,11 @@ if ($answerID !=  $correctAnswer){
 
  			$totalScore = $currentScore + $score;
 
-		 $sql = "UPDATE `quizaccess` SET  `status` = '$status' , `score` = '$totalScore' WHERE `q_code` = '$quizcode' AND quiz_takerID ='$userid'";
+		 	$sql = "UPDATE `quizaccess` SET  `status` = '$status' , `score` = '$totalScore' WHERE `q_code` = '$quizcode' AND quiz_takerID ='$userid'";
 			$check_ = mysqli_query($conn,$sql);
 
 			if($check_){
-				 echo "YOUR ANSWER : ".$answerID."</br>";
+				echo "You answered: ".$answerID."</br>";
 			} 
 	  }
 }

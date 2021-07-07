@@ -24,7 +24,7 @@ include '../include/config.php';
         $imgMC =  $oldimgMC;
     }
     
-    $mcUpdate = "UPDATE `multiplechoice` SET `item_question`='$mcQuest',`item_a`='$mcItemA'  , `item_b`='$mcItemB' , `item_c`='$mcItemC' , `item_d`='$mcItemD' , `item_e`='$mcItemE' , `item_timer`='$mcTime' , `item_point`='$mcPnt' , `item_answer`='$mcAnswer' , `item_img`='$imgMC' WHERE id = '$edit_id'";
+    $mcUpdate = "UPDATE `multiplechoice` SET `item_question`='$mcQuest',`item_a`='$mcItemA'  , `item_b`='$mcItemB' , `item_c`='$mcItemC' , `item_d`='$mcItemD' , `item_e`='$mcItemE' , `item_timer`='$mcTime' , `item_point`='$mcPnt' , `item_answer`='$mcAnswer' , `item_img`='$imgMC' WHERE item_number = '$edit_id'";
     $result = mysqli_query($conn, $mcUpdate);
 
     if ($result){
@@ -35,8 +35,12 @@ include '../include/config.php';
 <?php
 $del_id = $_POST['del_id'];
 
-    $mcDelete = "DELETE from multiplechoice WHERE id = '$del_id'";
+    $mcDelete = "DELETE FROM multiplechoice WHERE item_number = '$del_id'";
     $result = mysqli_query($conn, $mcDelete);
+
+        if($result){
+            $del_quest = mysqli_query($conn,"DELETE FROM questions WHERE id = '$del_id'");
+        }
 ?>
 
 
@@ -61,7 +65,7 @@ $del_id = $_POST['del_id'];
         $imgIDEN =  $oldimgIDEN;
     }
 
-     $idenUpdate = "UPDATE `identification` SET `item_question`='$idenQuest',`item_img`='$idenImg',`answer_a`='$idenAns',`item_timer`='$idenTime',`item_point`='$idenPnt',`item_img`='$imgIDEN' WHERE id = '$edit_iden_id'";
+     $idenUpdate = "UPDATE `identification` SET `item_question`='$idenQuest',`item_img`='$idenImg',`answer_a`='$idenAns',`item_timer`='$idenTime',`item_point`='$idenPnt',`item_img`='$imgIDEN' WHERE item_number = '$edit_iden_id'";
      $result = mysqli_query($conn, $idenUpdate);
 
     if ($result){
@@ -72,8 +76,12 @@ $del_id = $_POST['del_id'];
 <?php
 $del_iden_id = $_POST['del_iden_id'];
 
-    $idenDelete = "DELETE from identification WHERE id = '$del_iden_id'";
+    $idenDelete = "DELETE from identification WHERE item_number = '$del_iden_id'";
     $result = mysqli_query($conn, $idenDelete);
+
+    if($result){
+        $del_quest = mysqli_query($conn,"DELETE FROM questions WHERE id = '$del_iden_id'");
+    }
 ?>
 
 
@@ -123,7 +131,7 @@ $del_iden_id = $_POST['del_iden_id'];
         $imgENU =  $oldimgENU;
     }
 
-    $enuUpdate = "UPDATE `enumeration` SET `item_question`='$enuQuest',`choice_a`='$text1',`choice_b`='$text2',`choice_c`='$text3',`choice_d`='$text4',`choice_e`='$text5',`check_a`='$enu1',`check_b`='$enu2',`check_c`='$enu3',`check_d`='$enu4',`check_e`='$enu5',`item_point`='$enuPnt',`item_timer`='$enuTime',`item_img`='$imgENU' WHERE id = '$edit_enu_id'";
+    $enuUpdate = "UPDATE `enumeration` SET `item_question`='$enuQuest',`choice_a`='$text1',`choice_b`='$text2',`choice_c`='$text3',`choice_d`='$text4',`choice_e`='$text5',`check_a`='$enu1',`check_b`='$enu2',`check_c`='$enu3',`check_d`='$enu4',`check_e`='$enu5',`item_point`='$enuPnt',`item_timer`='$enuTime',`item_img`='$imgENU' WHERE item_number = '$edit_enu_id'";
     $result = mysqli_query($conn, $enuUpdate);
 
    if ($result){
@@ -134,6 +142,10 @@ $del_iden_id = $_POST['del_iden_id'];
 <?php
 $del_enu_id = $_POST['del_enu_id'];
 
-    $enuDelete = "DELETE from enumeration WHERE id = '$del_enu_id'";
+    $enuDelete = "DELETE from enumeration WHERE item_number = $del_enu_id'";
     $result = mysqli_query($conn, $enuDelete);
+
+    if($result){
+        $del_quest = mysqli_query($conn,"DELETE FROM questions WHERE id = '$del_enu_id'");
+    }
 ?>

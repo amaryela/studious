@@ -23,7 +23,7 @@ if ($answerID !=  $correctAnswer){
 	 	$score = 0;
 
 //insert answersif 
-		 mysqli_query($conn, "insert into ans (ans, template, question_id, user_id , quiz_code , score , status) values ('$answerID' , '$template' , '$qst_ID' , '$userid' , '$quizcode', '$score', '$status')"); 
+		 mysqli_query($conn, "INSERT INTO ans (ans, template, question_id, user_id , quiz_code , score , status) VALUES ('$answerID' , '$template' , '$qst_ID' , '$userid' , '$quizcode', '$score', '$status')"); 
  
 
 //update quizaccess status if student is done answering
@@ -39,7 +39,7 @@ if ($answerID !=  $correctAnswer){
 			$check_ = mysqli_query($conn,$sql);
 
 			if($check_){
-				 echo "YOUR ANSWER : ".$answerID."</br>";
+				echo "You answered: ".$answerID."</br>";
 			}  
 
 	 }
@@ -49,7 +49,7 @@ if ($answerID !=  $correctAnswer){
 	 	$score = $item_point;
 
 //insert answers
-		 mysqli_query($conn, "insert into ans (ans, template, question_id, user_id , quiz_code , score , status) values ('$answerID' , '$template' , '$qst_ID' , '$userid' , '$quizcode', '$score', '$status')"); 
+		 mysqli_query($conn, "INSERT INTO ans (ans, template, question_id, user_id , quiz_code , score , status) VALUES ('$answerID' , '$template' , '$qst_ID' , '$userid' , '$quizcode', '$score', '$status')"); 
  
 
 //update quizaccess status if student is done answering
@@ -63,7 +63,7 @@ if ($answerID !=  $correctAnswer){
 			$check_ = mysqli_query($conn,$sql);
 
 			if($check_){
-				 echo "YOUR ANSWER : ".$answerID."</br>";
+				echo "You answered: ".$answerID."</br>";
 			} 
 	  }
 	}

@@ -1,8 +1,8 @@
 <?php
 $servername = "remotemysql.com"; 
-$database 	= "nWajPpcVbX"; 
-$dbname 	= "nWajPpcVbX"; 
-$dbpass 	= "aHivNFs58c"; 
+$database 	= "7b6lAP0DIS"; 
+$dbname 	= "7b6lAP0DIS"; 
+$dbpass 	= "Bgts20RA5Z"; 
 
 // xampp connection
 // $servername = "localhost"; 

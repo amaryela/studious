@@ -1,14 +1,14 @@
 <?php
-$servername = "remotemysql.com"; 
-$database 	= "zQGfcDFPDS"; 
-$dbname 	= "zQGfcDFPDS"; 
-$dbpass 	= "1n00OOSXww"; 
+// $servername = "remotemysql.com"; 
+// $database 	= "zQGfcDFPDS"; 
+// $dbname 	= "zQGfcDFPDS"; 
+// $dbpass 	= "1n00OOSXww"; 
 
 // xampp connection
-// $servername = "localhost"; 
-// $database 	= "studious"; 
-// $dbname 	= "root"; 
-// $dbpass 	= ""; 
+$servername = "localhost"; 
+$database 	= "studious"; 
+$dbname 	= "root"; 
+$dbpass 	= ""; 
 
 $conn = mysqli_connect($servername, $dbname,
 $dbpass, $database);

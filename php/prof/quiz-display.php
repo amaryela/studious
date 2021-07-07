@@ -297,44 +297,44 @@ else if ($row['question_template'] == "enumeration") {
 
   <div class="text-center" style="min-height:120px;">
     <?php if(!empty($enu['choice_a'])){ ?>
-      <label>
+      <p class="m-2 p-2 answer">
             <?php if($enu['check_a'] == "correct"){ ?>
             <input type="checkbox" name="enu1" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_a']; }
             else { ?>
             <input type="checkbox" name="enu1" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_a']; }
-    } ?></label><br>
+    } ?></p><br>
 
     <?php if(!empty($enu['choice_b'])){ ?>
-        <label>
+      <p class="m-2 p-2 answer">
             <?php if($enu['check_b'] == "correct"){ ?>
             <input type="checkbox" name="enu2" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_b']; }
             else { ?>
             <input type="checkbox" name="enu2" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_b']; }
-    } ?></label><br>
+    } ?></p>
 
     <?php if(!empty($enu['choice_c'])){ ?>
-        <label>
+      <p class="m-2 p-2 answer">
             <?php if($enu['check_c'] == "correct"){ ?>
             <input type="checkbox" name="enu3" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_c']; }
             else { ?>
             <input type="checkbox" name="enu3" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_c']; }
-    } ?></label><br>
+    } ?></p>
 
     <?php if(!empty($enu['choice_d'])){ ?>
-        <label>
+      <p class="m-2 p-2 answer">
             <?php if($enu['check_d'] == "correct"){ ?>
             <input type="checkbox" name="enu4" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_d']; }
             else { ?>
             <input type="checkbox" name="enu4" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_d']; }
-    } ?></label><br>
+    } ?></p>
 
     <?php if(!empty($enu['choice_e'])){ ?>
-        <label>
+      <p class="m-2 p-2 answer">
         <?php if($enu['check_e'] == "correct"){ ?>
             <input type="checkbox" name="enu5" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_e']; }
             else{ ?>
             <input type="checkbox" name="enu5" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_e']; }
-    } ?></label><br>
+    } ?></p>
   </div>
 
     <form action="" method="post" id="doneQE">

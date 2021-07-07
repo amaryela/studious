@@ -343,6 +343,7 @@ else if ($row['question_template'] == "enumeration") {
                 else{ ?>
                 <input type="checkbox" name="enu5" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_e']; }
         } ?></label><br>
+        </div>
 
         <div class="choices" style="text-align:right;">
             <p class="m-0 text-warning">You answered:</p>

@@ -412,29 +412,29 @@ elseif ($row['question_template'] == "enumeration") {
 
     <form method="post" id="enuForm">
       <?php if(!empty($enu['choice_a'])){ ?>
-            <label>
+            <p class="m-2 p-2 choices chh">
                 <input id="en1" class="opt1" type="checkbox" value="<?php echo $enu['choice_a'];?> " name="enu1">&nbsp;&nbsp; <?php echo $enu['choice_a']; 
-        } ?></label><br>
+        } ?></p>
 
         <?php if(!empty($enu['choice_b'])){ ?>
-            <label>    
+            <p class="m-2 p-2 choices chh">    
             <input id="en2" class="opt2" type="checkbox" value="<?php echo $enu['choice_b'];?> " name="enu2">&nbsp;&nbsp; <?php echo $enu['choice_b']; 
-        } ?></label><br>
+        } ?></p>
 
         <?php if(!empty($enu['choice_c'])){ ?>
-            <label>        
+            <p class="m-2 p-2 choices chh">        
             <input id="en3" class="opt3" type="checkbox" value="<?php echo $enu['choice_c'];?> " name="enu3">&nbsp;&nbsp; <?php echo $enu['choice_c']; 
-        } ?></label><br>
+        } ?></p>
 
         <?php if(!empty($enu['choice_d'])){ ?>
-            <label>    
+            <p class="m-2 p-2 choices chh">    
             <input id="en4" class="opt4" type="checkbox" value="<?php echo $enu['choice_d'];?> " name="enu4">&nbsp;&nbsp; <?php echo $enu['choice_d']; 
-        } ?></label><br>
+        } ?></p>
 
         <?php if(!empty($enu['choice_e'])){ ?>
-            <label> 
+            <p class="m-2 p-2 choices chh"> 
             <input id="en5" class="opt5" type="checkbox" value="<?php echo $enu['choice_e'];?> " name="enu5">&nbsp;&nbsp; <?php echo $enu['choice_e']; 
-        } ?></label><br>
+        } ?></p>
 
     <input id="text1" type="hidden" name="" value="<?php echo $enu['choice_a']; ?>">
     <input id="text2" type="hidden" name="" value="<?php echo $enu['choice_b']; ?>">
@@ -451,7 +451,7 @@ elseif ($row['question_template'] == "enumeration") {
     <input type="hidden" id="Epoint" name="" value="<?php echo $enu['item_point']; ?>">
     <input type="hidden" id="EcorrectAns" name="" value="<?php echo $ENUans; ?>">
 
-    <button id="ENUsubmit" type="submit" name="ENUsubmit" class="btn btn-outline-dark"><i class="fas fa-check-circle"></i>&emsp;SUBMIT&nbsp;</button>
+    <button id="ENUsubmit" type="submit" name="ENUsubmit" class="btn btn-dark"><i class="fas fa-check-circle"></i>&emsp;SUBMIT&nbsp;</button>
 </form>
 </div>
 

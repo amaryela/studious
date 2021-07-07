@@ -16,12 +16,12 @@ $result = mysqli_query($conn, $query);
 	<div class="row border">
 		<?php if ($row["status"] == "done"){ ?>
       <div class="col text-center bg-warning">
-        <?php echo $row["quiz_takerFName"] . " " . $row["quiz_takerLName"]; ?>
+        <?php echo $row["quiz_takerFName"] . " " . $row["quiz_takerLName"]; ?><br>
         <?php echo $row["score"]; ?> points<br>
       </div>
 		<?php } else{ ?> 
 			<div class="col text-center">
-        <?php echo $row["quiz_takerFName"] . " " . $row["quiz_takerLName"]; ?>
+        <?php echo $row["quiz_takerFName"] . " " . $row["quiz_takerLName"]; ?><br>
         <?php echo $row["score"]; ?> points<br>
       </div>
 		<?php	} ?>

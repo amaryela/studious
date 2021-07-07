@@ -56,7 +56,8 @@ if(isset($_POST['launch'])){
 						 $sq_id = $row['id'];
 						 $_SESSION["sched_id"] = $sq_id;
 					 
-					 echo "<script>alert('QUIZ STARTED!');window.location='on-going-quiz.php?next=$sq_id';</script>";
+					//  echo "<script>alert('QUIZ STARTED!');window.location='on-going-quiz.php?next=$sq_id';</script>";
+					echo "<script>window.location='on-going-quiz.php?next=$sq_id';</script>";
 			// }
 		}
 	}

@@ -77,56 +77,103 @@ $sresult = mysqli_query($conn, $squery);
             if ($as['question_template'] == "enumeration") {
               $enuFetch = mysqli_query($conn, "SELECT * FROM `enumeration` WHERE `item_number`='$in' AND `quiz_code`='$quiz_code'");
               while ($enu = mysqli_fetch_array($enuFetch)){
-              $ans1 =  $enu['check_a'];
-              $ans2 =  $enu['check_b'];
-              $ans3 =  $enu['check_c'];
-              $ans4 =  $enu['check_d'];
-              $ans5 =  $enu['check_e'];
+
+                $enuScore= mysqli_query($conn, "SELECT * FROM `ans` WHERE `question_id`='$in' AND `quiz_code`='$quiz_code' AND `user_id` = '$userid'");
+                $enScore  = mysqli_fetch_array($enuScore);
+          
+                $enuFetchANS = mysqli_query($conn, "SELECT * FROM `enumeration ans` WHERE `quiz_id`='$in' AND `quiz_code`='$quiz_code' AND `user_id` = '$userid'");
+                $enuANS  = mysqli_fetch_array($enuFetchANS);
             ?>
 
           <div class="text-center p-3">
-            <h3 class="p-3"><?php echo $enu['item_question']; ?></h3>
-            <br>
+            <?php if(($enu['item_img']) != "../../img/questPics/"){ ?>
+              <img src="<?php echo $enu['item_img']; ?>" width="100px;" height="100px;" alt="itemImage">
+            <?php } ?><br>
+            <h3 class="p-3"><?php echo $enu['item_question']; ?></h3><br>
+            
 
-              <?php if(!empty($enu['choice_a'])){ ?>
-                  <label>
-                    <?php if($enu['check_a'] == "correct"){ ?>
-                      <input type="checkbox" name="enu1" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_a']; }
-                    else { ?>
-                      <input type="checkbox" name="enu1" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_a']; }
-              } ?></label><br>
+            <?php if(!empty($enu['choice_a'])){ ?>
+            <label>
+                <?php if($enuANS['checked_a'] == "true"){ ?>
+                <input type="checkbox" name="enu1" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_a'];
+                  if($enu['check_a'] == "correct"){?>
+                   &nbsp;&nbsp; <label style="color: green;"><span>&#9745;</span></label>
+           <?php } else{?>
+                  &nbsp;&nbsp;  <label style="color: red;"><span>&#9746;</span></label>
+           <?php }}
+                else { ?>
+                <input type="checkbox" name="enu1" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_a']; 
+                if($enu['check_a'] == "correct"){?>
+                 &nbsp;&nbsp;   <label style="color: green;"><span>&#9745;</span></label>
+           <?php }}
+           } ?></label><br>
 
-              <?php if(!empty($enu['choice_b'])){ ?>
-                  <label>
-                    <?php if($enu['check_b'] == "correct"){ ?>
-                      <input type="checkbox" name="enu2" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_b']; }
-                    else { ?>
-                      <input type="checkbox" name="enu2" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_b']; }
-              } ?></label><br>
+          <?php if(!empty($enu['choice_b'])){ ?>
+            <label>
+                <?php if($enuANS['checked_b'] == "true"){ ?>
+                <input type="checkbox" name="enu2" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_b'];
+                  if($enu['check_b'] == "correct"){?>
+                  &nbsp;&nbsp;  <label style="color: green;"><span>  &#9745;  </span></label>
+           <?php } else{?>
+                 &nbsp;&nbsp;   <label style="color: red;"><span>  &#9746;</span></label>
+           <?php }}
+                else { ?>
+                <input type="checkbox" name="enu2" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_b']; 
+                if($enu['check_b'] == "correct"){?>
+                 &nbsp;&nbsp;   <label style="color: green;"><span>  &#9745;</span></label>
+           <?php }}
+           } ?></label><br>
 
-              <?php if(!empty($enu['choice_c'])){ ?>
-                  <label>
-                    <?php if($enu['check_c'] == "correct"){ ?>
-                      <input type="checkbox" name="enu3" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_c']; }
-                    else { ?>
-                      <input type="checkbox" name="enu3" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_c']; }
-              } ?></label><br>
 
-              <?php if(!empty($enu['choice_d'])){ ?>
-                  <label>
-                      <?php if($enu['check_d'] == "correct"){ ?>
-                      <input type="checkbox" name="enu4" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_d']; }
-                      else { ?>
-                      <input type="checkbox" name="enu4" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_d']; }
-              } ?></label><br>
+           <?php if(!empty($enu['choice_c'])){ ?>
+            <label>
+                <?php if($enuANS['checked_c'] == "true"){ ?>
+                <input type="checkbox" name="enu3" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_c'];
+                  if($enu['check_c'] == "correct"){?>
+                  &nbsp;&nbsp;  <label style="color: green;"><span>  &#9745;</span></label>
+           <?php } else{?>
+                   &nbsp;&nbsp; <label style="color: red;"><span>  &#9746;</span></label>
+           <?php }}
+                else { ?>
+                <input type="checkbox" name="enu3" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_c']; 
+                if($enu['check_c'] == "correct"){?>
+                   &nbsp;&nbsp; <label style="color: green;"><span>  &#9745;</span></label>
+           <?php }}
+           } ?></label><br>
 
-              <?php if(!empty($enu['choice_e'])){ ?>
-                  <label>
-                  <?php if($enu['check_e'] == "correct"){ ?>
-                      <input type="checkbox" name="enu5" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_e']; }
-                      else{ ?>
-                      <input type="checkbox" name="enu5" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_e']; }
-              } ?></label><br>
+
+           <?php if(!empty($enu['choice_d'])){ ?>
+            <label>
+                <?php if($enuANS['checked_d'] == "true"){ ?>
+                <input type="checkbox" name="enu4" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_d'];
+                  if($enu['check_d'] == "correct"){?>
+                  &nbsp;&nbsp;  <label style="color: green;"><span>  &#9745;</span></label>
+           <?php } else{?>
+                  &nbsp;&nbsp;  <label style="color: red;"><span>  &#9746;</span></label>
+           <?php }}
+                else { ?>
+                <input type="checkbox" name="enu4" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_d']; 
+                if($enu['check_d'] == "correct"){?>
+                  &nbsp;&nbsp;  <label style="color: green;"><span>  &#9745;</span></label>
+           <?php }}
+           } ?></label><br>
+
+
+           <?php if(!empty($enu['choice_e'])){ ?>
+            <label>
+                <?php if($enuANS['checked_e'] == "true"){ ?>
+                <input type="checkbox" name="enu5" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_e'];
+                  if($enu['check_e'] == "correct"){?>
+                   &nbsp;&nbsp; <label style="color: green;"><span>  &#9745;</span></label>
+           <?php } else{?>
+                   &nbsp;&nbsp; <label style="color: red;"><span>  &#9746;</span></label>
+           <?php }}
+                else { ?>
+                <input type="checkbox" name="enu5" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_e']; 
+                if($enu['check_e'] == "correct"){?>
+                  &nbsp;&nbsp;  <label style="color: green;"><span>  &#9745;</span></label>
+           <?php }}
+           } ?></label><br>
 
           </div>
 
@@ -313,40 +360,40 @@ $sresult = mysqli_query($conn, $squery);
 
 <!-- enumeration show question -->
 <?php }}
-else if ($row['question_template'] == "enumeration") {
-    $enuFetch = mysqli_query($conn, "SELECT * FROM `enumeration` WHERE `item_number`='$in' AND `quiz_code`='$quiz_code'");
-    while ($enu = mysqli_fetch_array($enuFetch)){
-      if ($enu['check_a'] == "correct"){
-        $ans1= $enu['choice_a'];
-      }else{
-        $ans1 = "";
-      }
+elseif ($row['question_template'] == "enumeration") {
+  $enuFetch = mysqli_query($conn, "SELECT * FROM `enumeration` WHERE `item_number`='$in' AND `quiz_code`='$quiz_code'");
+  while ($enu = mysqli_fetch_array($enuFetch)){
+    if ($enu['check_a'] == "correct"){
+      $ans1= $enu['choice_a'];
+    }else{
+      $ans1 = "";
+    }
 
-      if ($enu['check_b'] == "correct"){
-        $ans2= $enu['choice_b'];
-      }else{
-        $ans2 = "";
-      }
+    if ($enu['check_b'] == "correct"){
+      $ans2= $enu['choice_b'];
+    }else{
+      $ans2 = "";
+    }
 
-      if ($enu['check_c'] == "correct"){
-        $ans3= $enu['choice_c'];
-      }else{
-        $ans3 = "";
-      }
+    if ($enu['check_c'] == "correct"){
+      $ans3= $enu['choice_c'];
+    }else{
+      $ans3 = "";
+    }
 
-      if ($enu['check_d'] == "correct"){
-        $ans4= $enu['choice_d'];
-      }else{
-        $ans4 = "";
-      }
+    if ($enu['check_d'] == "correct"){
+      $ans4= $enu['choice_d'];
+    }else{
+      $ans4 = "";
+    }
 
-      if ($enu['check_e'] == "correct"){
-        $ans5= $enu['choice_e'];
-      }else{
-        $ans5 = "";
-      }
-    
-    $ENUans=$ans1 . $ans2 . $ans3 . $ans4 . $ans5;
+    if ($enu['check_e'] == "correct"){
+      $ans5= $enu['choice_e'];
+    }else{
+      $ans5 = "";
+    }
+  
+  $ENUans=$ans1 . $ans2 . $ans3 . $ans4 . $ans5;
 ?>
 
 <div class="text-center p-3">
@@ -362,36 +409,32 @@ else if ($row['question_template'] == "enumeration") {
 </div>
 
 <div class="text-center" style="min-height:120px;">
-<form method="post" id="enuForm">
-  <?php if(!empty($enu['choice_a'])){ ?>
-    <label>
-      <input id="en1" class="opt1" type="checkbox" value="<?php echo $enu['choice_a'];?> " name="enu1">&emsp;<?php echo $enu['choice_a']; ?>
-    </label><br>
-  <?php } ?>
 
-  <?php if(!empty($enu['choice_b'])){ ?>
-    <label>
-      <input id="en2" class="opt2" type="checkbox" value="<?php echo $enu['choice_b'];?> " name="enu2">&emsp;<?php echo $enu['choice_b']; ?>
-    </label><br>
-  <?php } ?>
+    <form method="post" id="enuForm">
+      <?php if(!empty($enu['choice_a'])){ ?>
+            <label>
+                <input id="en1" class="opt1" type="checkbox" value="<?php echo $enu['choice_a'];?> " name="enu1">&nbsp;&nbsp; <?php echo $enu['choice_a']; 
+        } ?></label><br>
 
-  <?php if(!empty($enu['choice_c'])){ ?>
-    <label>
-      <input id="en3" class="opt3" type="checkbox" value="<?php echo $enu['choice_c'];?> " name="enu3">&emsp;<?php echo $enu['choice_c']; ?>
-    </label><br>
-  <?php } ?>
+        <?php if(!empty($enu['choice_b'])){ ?>
+            <label>    
+            <input id="en2" class="opt2" type="checkbox" value="<?php echo $enu['choice_b'];?> " name="enu2">&nbsp;&nbsp; <?php echo $enu['choice_b']; 
+        } ?></label><br>
 
-  <?php if(!empty($enu['choice_d'])){ ?>
-    <label>
-      <input id="en4" class="opt4" type="checkbox" value="<?php echo $enu['choice_d'];?> " name="enu4">&emsp;<?php echo $enu['choice_d']; ?>
-      </label><br>
-  <?php } ?>
+        <?php if(!empty($enu['choice_c'])){ ?>
+            <label>        
+            <input id="en3" class="opt3" type="checkbox" value="<?php echo $enu['choice_c'];?> " name="enu3">&nbsp;&nbsp; <?php echo $enu['choice_c']; 
+        } ?></label><br>
 
-  <?php if(!empty($enu['choice_e'])){ ?>
-    <label>
-      <input id="en5" class="opt5" type="checkbox" value="<?php echo $enu['choice_e'];?> " name="enu5">&emsp;<?php echo $enu['choice_e']; ?>
-      </label><br>
-  <?php } ?>
+        <?php if(!empty($enu['choice_d'])){ ?>
+            <label>    
+            <input id="en4" class="opt4" type="checkbox" value="<?php echo $enu['choice_d'];?> " name="enu4">&nbsp;&nbsp; <?php echo $enu['choice_d']; 
+        } ?></label><br>
+
+        <?php if(!empty($enu['choice_e'])){ ?>
+            <label> 
+            <input id="en5" class="opt5" type="checkbox" value="<?php echo $enu['choice_e'];?> " name="enu5">&nbsp;&nbsp; <?php echo $enu['choice_e']; 
+        } ?></label><br>
 
     <input id="text1" type="hidden" name="" value="<?php echo $enu['choice_a']; ?>">
     <input id="text2" type="hidden" name="" value="<?php echo $enu['choice_b']; ?>">
@@ -417,7 +460,7 @@ else if ($row['question_template'] == "enumeration") {
       <img src="../../img/undraw_Faq_re_31cw.svg" alt="imgDes" height="200px">
     </div>
     <div class="col mt-5 p-5">
-      <h5 class="text-dark fw-bold result"></h5>
+      <h5 class="text-dark fw-bold resultaa"></h5>
       <h5 class="text-warning">Current Score: </h5>
     </div>
   </div>
@@ -429,13 +472,13 @@ else if ($row['question_template'] == "enumeration") {
     location.reload(true);
   }
 
-var timeleft =<?php echo $enu['item_timer']; ?>;
-var downloadTimer = setInterval(function(){
-  if(timeleft <= 0){
-    clearInterval(downloadTimer);
-    $( "#answerID" ).prop( "disabled", true );
-    $( "#ENUsubmit" ).prop( "disabled", true );
-  }
+  var timeleft =<?php echo $enu['item_timer']; ?>;
+  var downloadTimer = setInterval(function(){
+    if(timeleft <= 0){
+      clearInterval(downloadTimer);
+      $( "#answerID" ).prop( "disabled", true );
+      $( "#ENUsubmit" ).prop( "disabled", true );
+    }
 
   document.getElementById("progressBarI").value = <?php echo $enu['item_timer']; ?> - timeleft;
   timeleft -= 1;
@@ -717,15 +760,39 @@ var downloadTimer = setInterval(function(){
 <!-- save answer for ENUMERATION-->
 <script type="text/javascript">
 
-  $(document).ready(function() {
-    $('#ENUsubmit').click(function(e) {
+  $(document).ready(function () {
+    $('#ENUsubmit').click(function (e) {
       e.preventDefault();
 
-          var ae1 = document.getElementById("en1").checked;
-          var ae2 = document.getElementById("en2").checked;
-          var ae3 = document.getElementById("en3").checked;
-          var ae4 = document.getElementById("en4").checked;
-          var ae5 = document.getElementById("en5").checked;
+      if($("#en1").prop('checked') == true){
+        var ae1 = "true";
+      } else{
+        var ae1 = "false";
+      }
+
+      if($("#en2").prop('checked') == true){
+          var ae2 = "true";
+      } else{
+        var ae2 = "false";
+      }
+
+      if($("#en3").prop('checked') == true){
+          var ae3 = "true";
+      } else{
+        var ae3 = "false";
+      }
+
+      if($("#en4").prop('checked') == true){
+          var ae4 = "true";
+      } else{
+        var ae4 = "false";
+      }
+
+      if($("#en5").prop('checked') == true){
+          var ae5 = "true";
+      } else{
+        var ae5 = "false";
+      }
 
           var txt1 = $('#text1').val();
           var txt2 = $('#text2').val();
@@ -746,8 +813,8 @@ var downloadTimer = setInterval(function(){
           type: "POST",
           url: "loaders/enumeration-save.php",
           data: {"txt1": txt1, "txt2": txt2, "txt3": txt3, "txt4": txt4, "txt5": txt5,  "ae1": ae1, "ae2": ae2, "ae3": ae3, "ae4": ae4, "ae5": ae5, "status": status , "qst_ID": qst_ID , "template": template , "tempID": tempID , "userid": userid , "quiz_code": quiz_code , "point": point , "correctAns": correctAns},
-          success: function(data) {
-            $('.result').html(data);
+          success: function (data) {
+            $('.resultaa').html(data);
             $('#enuForm')[0].reset();
           }
         });

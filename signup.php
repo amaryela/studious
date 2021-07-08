@@ -110,9 +110,42 @@ if(isset($_POST['register'])){
 	<div class="wrap">
          <div class="text-center side" style="align-items: center;">
           <img src="img/undraw_exams_g4ow.svg" width="500px" style="margin-bottom:30px;">
-              <p style="font-size:18;">By creating an account you agree to our <a href="#"
-              style="text-decoration:none; color:#f5b606;">Terms & Privacy</a>.</p>
+              <p style="font-size:18;">By creating an account you agree to our <a href="#termsModal" data-bs-toggle="modal" style="text-decoration:none; color:#f5b606;">Terms & Privacy</a>.</p>
          </div>
+
+<!-- Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-warning" id="exampleModalLongTitle">Terms & Privacy</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <div class="modal-body">
+<p> Please read these terms and privacy policy carefully before using the Studious website. Your access to and use of the service is conditioned on your acceptance of and compliance with these terms. These terms apply to all visitors, users and others who will access or use the service.<br>
+Studious is committed in respecting the user’s privacy and security as it aims to achieve its goal of motivating every students and make the virtual learning process more fun. This privacy policy specify how we process the user’s information and how they will be aware of their privacy rights.<br>
+Studious collects only the information required to provide the services to the user. The user’s Personal Information is utilize just for giving and improving the Site. By utilizing the Site, user should consent to the assortment and utilization of data as per this arrangement.<br>
+Studious operations allow the user to create, view and upload quizzes. This website acts an interactive learning tool which collects data and processes on the behalf of the users in the site. For further development of this website we aim to provide the user of different or additional privacy policies which will secure the users privacy.<br>
+
+<p class="text-warning fw-bold">Information Collection and Use</p>
+
+While using Studios, we may ask user to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include your name and email. The privacy of the user is at our utmost priority at which the gathered data will be kept in the highest level of confidentiality.<br>
+
+<p class="text-warning fw-bold">Changes to This Terms and Privacy Policy</p>
+This Terms and Privacy Policy will remain in effect except with respect to any changes in its provisions in the future, which will be in effect immediately after being posted on this page We reserve the right to update or change our Terms and Privacy Policy at any time and you should check this Privacy Policy periodically. Your continued use of the Service after we post any modifications to the Privacy Policy on this page will constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified Privacy Policy. If we make any material changes to this Privacy Policy, we will notify you either through the email address you have provided us, or by placing a prominent notice on our website.<br>
+
+<p class="text-warning fw-bold">User accounts</p>
+You may be required to register in the website and provide confidential information as a user of these website. You are capable of proving the integrity of this information as well as maintaining the safety and security of your personally identifiable information. You're also in responsible of all of these activity that transpire under your account or password.
+If you have any concerns about the situation, please let us know.<br>
+
+<p class="text-warning fw-bold">Contact Us</p>
+If you have any questions about this Terms and Privacy Policy , please contact us at thestudious@gmail.com.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 		<div class="signup-content">
       <form action="signup.php" method="post">

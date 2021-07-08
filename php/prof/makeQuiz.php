@@ -55,8 +55,8 @@ if (empty($_SESSION['id'])){
         </div>
         <div class="text-center">
             <h5 style="font-weight:1000;">Scheduled Quiz</h5><br>
-            <input type="date" name="date" style="width:50%;"><br><br>
-            <input type="time" name="time" style="width:30%;"><br><br>
+            <input type="date" name="date" style="width:50%;" required><br><br>
+            <input type="time" name="time" style="width:30%;" required><br><br>
             <input type="hidden" name="quizcode" value="<?php echo $row['quiz_code'];?>">
             <input type="hidden" name="quizname" value="<?php echo $row['quiz_name'];?>">
             <input type="hidden" name="status" value="set">

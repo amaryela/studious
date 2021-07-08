@@ -52,8 +52,7 @@ if (isset($_GET['next'])) {
             <img src="../../img/undraw_design_team_af2y.svg" height="150px" alt="design-content">
         </div>
         <div class="col m-auto ms-5">
-            <h2 class="mb-3" style="text-transform:uppercase;">SUBJECT</h2>
-            <h5 class="m-0 fw-bold text-dark" style="font-size:1rem;"><?php echo $row['quiz_name']; ?></h5>
+            <h2 class="mb-3" style="text-transform:uppercase;"><?php echo $row['quiz_name']; ?></h2>
             <h5 class="text-warning" style="font-size:1rem;"><?php echo "Score :  " . $scrow['score'] . "/" . $sum; ?></h5>
         </div>
       </div>

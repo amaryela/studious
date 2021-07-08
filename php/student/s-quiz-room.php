@@ -18,8 +18,27 @@ if (isset($_GET['next'])) {
   while ($stts_up = mysqli_fetch_array($statusUpdate)) {
   $_SESSION["status"] = $stts_up['status']; 
 
-          if ($_SESSION["status"] == "finished"){ 
+          if ($_SESSION["status"] == "finished"){
+            $qcode = $stts_up['quiz_code'];
+            $rcode = $stts_up['quiz_roomcode'];
+            $qname = $stts_up['quiz_name'];
+
+            $ques = mysqli_query($conn, "SELECT sum(score) FROM quizaccess WHERE quiz_takerID = '$userid' AND q_code = '$qcode' AND q_roomcode = '$rcode'");
+            $cols = mysqli_fetch_array($ques);
+            $sum = $cols[0];
+
+            $quep = mysqli_query($conn, "SELECT sum(point) FROM questions WHERE quiz_code ='$qcode'");
+            $colp = mysqli_fetch_row($quep);
+            $tot = $colp[0];
+
+            $percent = ($sum/$tot)*100;
+
+            $insert = "INSERT INTO `records`(`room_code`,`quiz_code`,`quiz_name`,`user_id`,`score`,`percentage`, `total`) VALUES ('".$rcode."','".$qcode."','".$qname."','".$userid."','".$sum."','".$percent."','".$tot."')";
+
+            $check = mysqli_query($conn,$insert);
+            if($check){
             echo "<script>window.location='top-participants.php';</script>";
+            }
           }
 
           if ($_SESSION["status"] == "waiting"){ ?>

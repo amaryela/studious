@@ -39,7 +39,7 @@ if ($answerID !=  $correctAnswer){
 			$check_ = mysqli_query($conn,$sql);
 
 			if($check_){
-				echo "You answered: ".$answerID."</br>";
+				echo "You answered: ".$answerID."<br>";
 			}  
 
 	 }
@@ -63,7 +63,7 @@ if ($answerID !=  $correctAnswer){
 			$check_ = mysqli_query($conn,$sql);
 
 			if($check_){
-				echo "You answered: ".$answerID."</br>";
+				echo "You answered: ".$answerID."<br>";
 			} 
 	  }
 	}

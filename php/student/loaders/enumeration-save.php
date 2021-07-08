@@ -82,7 +82,7 @@ $checkExist = mysqli_query($conn, "SELECT * FROM `ans` WHERE `quiz_code` = '$qui
 			$check_ = mysqli_query($conn,$sql);
 
 			if($check_){
-				echo "You answered: ".$answerID."</br>";
+				echo "You answered: ".$answerID."<br>";
 			} 
 	 }
 
@@ -102,7 +102,7 @@ $checkExist = mysqli_query($conn, "SELECT * FROM `ans` WHERE `quiz_code` = '$qui
 			$check_ = mysqli_query($conn,$sql);
 
 			if($check_){
-				echo "You answered: ".$answerID."</br>";
+				echo "You answered: ".$answerID."<br>";
 			} 
 	  }
 }

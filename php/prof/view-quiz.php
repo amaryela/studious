@@ -43,9 +43,14 @@ if (isset($_GET['next'])) {
             <img src="../../img/undraw_design_team_af2y.svg" height="150px" alt="design-content">
         </div>
         <div class="col m-auto ms-5">
-            <h2 class="text-warning" style="text-transform:uppercase;">SUBJECT</h2>
-            <p class="m-0 fw-bold fs-6"><?php echo $row['quiz_name']; ?></p>
-            <p class="m-0 fw-bold fs-6">Total points</p>
+            <h2 class="text-warning" style="text-transform:uppercase;"><?php echo $row['quiz_name']; ?></h2>
+        <?php
+         $res = mysqli_query($conn, "SELECT sum(point) FROM questions WHERE quiz_code ='$id'");
+         $rr = mysqli_fetch_row($res);
+         $sum = $rr[0];
+
+        ?>
+            <p class="m-0 fw-bold fs-6">Total points: <?php echo $sum; ?></p>
         </div>
       </div>
     </div>

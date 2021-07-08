@@ -7,6 +7,9 @@ $userid = $_SESSION['id'];
 if (empty($_SESSION['id'])){
   header('Location: ../../index.php');
 }
+
+if (isset($_GET['next'])) {
+  $id = $_GET['next'];
 ?>
 
 <!doctype html>
@@ -29,39 +32,43 @@ if (empty($_SESSION['id'])){
     <?php include('../include/nav-prof.php'); ?>
 
     <div class="container jumbotron">
-        <div class="row">
-          <div class="col-5 text-end">
-            <img src="../../img/undraw_Files_sent_re_kv00.svg" alt="progress" width="150">
-          </div>
-          <div class="col">
-            <h2 class="mt-5 text-warning">STUDENTS PROGRESS</h2>
-          </div>
-        </div> 
-      </div>
+      <div class="row">
+        <div class="col-5 text-end">
+          <img src="../../img/undraw_Files_sent_re_kv00.svg" alt="progress" width="150">
+        </div>
+        <div class="col">
+          <h2 class="mt-5 text-warning">STUDENTS PROGRESS</h2>
+        </div>
+      </div> 
+    </div>
 
     <div class="container jumbotron">
+    <?php
+      $find = mysqli_query($conn, "SELECT * FROM records WHERE room_code = '$id'");
+        if (mysqli_num_rows($find) == 0) { ?>
+           <div class="text-center">
+              <p style="font-size:20px;">No records yet.</p>
+              <img src="../../img/undraw_Notify_re_65on.svg" alt="icon-no-room" height="300px">
+            </div>
+      <?php } else {
+        while($row = mysqli_fetch_array($find)) {?>
       <table class="table table-dark table-hover text-center">
         <thead>
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Quiz #1</th>
-            <th scope="col">Quiz #2</th>
+            <th scope="col">Percentage</th>
             <th scope="col">Average</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Ricca Manlangit</th>
-            <td>95</td>
-            <td>90</td>
-            <td>92.5</td>
+            <td>Rose Gard</td>
+            <td><?php echo $row['score']."/".$row['total'];?></td>
+            <td><?php echo $row['percentage'];?></td>
+            <td><?php echo $row['percentage'];?></td>
           </tr>
-          <tr>
-            <th scope="row">Grace Dimacali</th>
-            <td>90</td>
-            <td>95</td>
-            <td>92.5</td>
-          </tr>
+          <?php } } }?>
         </tbody>
       </table>
     </div>

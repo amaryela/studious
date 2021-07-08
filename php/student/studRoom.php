@@ -76,6 +76,10 @@ if (empty($_SESSION['id'])){
           }
           // $miss = mysqli_query($conn, "SELECT * FROM quizaccess WHERE q_roomcode = '$id' AND score = '' AND quiz_takerID = '$userid'");
           // $num_miss = mysqli_num_rows($miss);
+
+          $res = mysqli_query($conn, "SELECT sum(point) FROM questions WHERE quiz_code ='$id'");
+          $rr = mysqli_fetch_row($res);
+          $sum = $rr[0];
       ?>
 
         <div class="col-sm text-center">

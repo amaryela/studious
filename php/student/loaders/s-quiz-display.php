@@ -93,87 +93,87 @@ $sresult = mysqli_query($conn, $squery);
             
 
             <?php if(!empty($enu['choice_a'])){ ?>
-            <label>
+              <p class="m-2 p-2 answer">  
                 <?php if($enuANS['checked_a'] == "true"){ ?>
                 <input type="checkbox" name="enu1" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_a'];
-                  if($enu['check_a'] == "correct"){?>
-                   &nbsp;&nbsp; <label style="color: green;"><span>&#9745;</span></label>
-           <?php } else{?>
-                  &nbsp;&nbsp;  <label style="color: red;"><span>&#9746;</span></label>
+                  if($enu['check_a'] == "correct"){ ?>
+                  <span class="text-success fw-bold">- correct</span>
+           <?php } else{ ?>
+                  <span class="text-danger">- wrong</span>
            <?php }}
                 else { ?>
                 <input type="checkbox" name="enu1" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_a']; 
                 if($enu['check_a'] == "correct"){?>
-                 &nbsp;&nbsp;   <label style="color: green;"><span>&#9745;</span></label>
+                <span class="text-success">- correct</span>
            <?php }}
-           } ?></label><br>
+           } ?></p><br>
 
           <?php if(!empty($enu['choice_b'])){ ?>
-            <label>
+            <p class="m-2 p-2 answer">  
                 <?php if($enuANS['checked_b'] == "true"){ ?>
                 <input type="checkbox" name="enu2" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_b'];
                   if($enu['check_b'] == "correct"){?>
-                  &nbsp;&nbsp;  <label style="color: green;"><span>  &#9745;  </span></label>
-           <?php } else{?>
-                 &nbsp;&nbsp;   <label style="color: red;"><span>  &#9746;</span></label>
+                 <span class="text-success fw-bold">- correct</span>
+           <?php } else{ ?>
+                <span class="text-danger fw-bold">- wrong</span>
            <?php }}
                 else { ?>
                 <input type="checkbox" name="enu2" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_b']; 
                 if($enu['check_b'] == "correct"){?>
-                 &nbsp;&nbsp;   <label style="color: green;"><span>  &#9745;</span></label>
+                 <span class="text-success fw-bold">- correct</span>
            <?php }}
-           } ?></label><br>
+           } ?></p><br>
 
 
            <?php if(!empty($enu['choice_c'])){ ?>
-            <label>
+            <p class="m-2 p-2 answer">
                 <?php if($enuANS['checked_c'] == "true"){ ?>
                 <input type="checkbox" name="enu3" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_c'];
                   if($enu['check_c'] == "correct"){?>
-                  &nbsp;&nbsp;  <label style="color: green;"><span>  &#9745;</span></label>
+                  <span class="text-success fw-bold">- correct</span>
            <?php } else{?>
-                   &nbsp;&nbsp; <label style="color: red;"><span>  &#9746;</span></label>
+                  <span class="text-danger fw-bold">- wrong</span>
            <?php }}
                 else { ?>
                 <input type="checkbox" name="enu3" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_c']; 
                 if($enu['check_c'] == "correct"){?>
-                   &nbsp;&nbsp; <label style="color: green;"><span>  &#9745;</span></label>
+                  <span class="text-success fw-bold">- correct</span>
            <?php }}
-           } ?></label><br>
+           } ?></p><br>
 
 
            <?php if(!empty($enu['choice_d'])){ ?>
-            <label>
+            <p class="m-2 p-2 answer">
                 <?php if($enuANS['checked_d'] == "true"){ ?>
                 <input type="checkbox" name="enu4" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_d'];
                   if($enu['check_d'] == "correct"){?>
-                  &nbsp;&nbsp;  <label style="color: green;"><span>  &#9745;</span></label>
+                  <span class="text-success fw-bold">- correct</span>
            <?php } else{?>
-                  &nbsp;&nbsp;  <label style="color: red;"><span>  &#9746;</span></label>
+                  <span class="text-danger fw-bold">- wrong</span>
            <?php }}
                 else { ?>
                 <input type="checkbox" name="enu4" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_d']; 
                 if($enu['check_d'] == "correct"){?>
-                  &nbsp;&nbsp;  <label style="color: green;"><span>  &#9745;</span></label>
+                  <span class="text-success fw-bold">- correct</span>
            <?php }}
-           } ?></label><br>
+           } ?></p><br>
 
 
            <?php if(!empty($enu['choice_e'])){ ?>
-            <label>
+            <p class="m-2 p-2 answer">
                 <?php if($enuANS['checked_e'] == "true"){ ?>
                 <input type="checkbox" name="enu5" checked disabled>&nbsp;&nbsp; <?php echo $enu['choice_e'];
                   if($enu['check_e'] == "correct"){?>
-                   &nbsp;&nbsp; <label style="color: green;"><span>  &#9745;</span></label>
+                  <span class="text-success fw-bold">- correct</span>
            <?php } else{?>
-                   &nbsp;&nbsp; <label style="color: red;"><span>  &#9746;</span></label>
+                  <span class="text-danger fw-bold">- wrong</span>
            <?php }}
                 else { ?>
                 <input type="checkbox" name="enu5" unchecked disabled>&nbsp;&nbsp; <?php echo $enu['choice_e']; 
                 if($enu['check_e'] == "correct"){?>
-                  &nbsp;&nbsp;  <label style="color: green;"><span>  &#9745;</span></label>
+                 <span class="text-success fw-bold">- correct</span>
            <?php }}
-           } ?></label><br>
+           } ?></p><br>
 
           </div>
 
@@ -334,7 +334,7 @@ $sresult = mysqli_query($conn, $squery);
     </div>
     <div class="col mt-5 p-5">
       <h5 class="text-dark fw-bold result"></h5>
-      <h5 class="text-warning">Current Score: </h5>
+      <!-- <h5 class="text-warning">Current Score: </h5> -->
     </div>
   </div>
 
@@ -461,7 +461,7 @@ elseif ($row['question_template'] == "enumeration") {
     </div>
     <div class="col mt-5 p-5">
       <h5 class="text-dark fw-bold resultaa"></h5>
-      <h5 class="text-warning">Current Score: </h5>
+      <!-- <h5 class="text-warning">Current Score: </h5> -->
     </div>
   </div>
 
@@ -533,7 +533,7 @@ else if ($row['question_template'] == "identification") {
     </div>
     <div class="col mt-5 p-5">
       <h5 class="text-dark fw-bold result"></h5>
-      <h5 class="text-warning">Current Score: </h5>
+      <!-- <h5 class="text-warning">Current Score: </h5> -->
     </div>
   </div>
   

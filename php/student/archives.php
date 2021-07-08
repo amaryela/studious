@@ -69,8 +69,10 @@ if (empty($_SESSION['id'])){
 
             <div class="main-room m-2" style="border: 2px solid <?php echo $row['roomColor']; ?>; background: linear-gradient( <?php echo $row['roomColor']; ?> 70%, white 30%); ">
               <div class="main-info text-dark p-2">
+                <a class="text-dark" href="viewArchives.php?next=<?php echo $row['roomCode']; ?>">
                 <span style="font-weight:600;"> <?php echo $row['roomName']; ?></span><br>
                 <span style="font-size: 12px;">Room code:&nbsp;</span><span><?php echo $row['roomCode']; ?></span>
+                <a>
               </div>
             </div>
         <?php } } ?>

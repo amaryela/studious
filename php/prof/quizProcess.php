@@ -142,7 +142,7 @@ $del_iden_id = $_POST['del_iden_id'];
 <?php
 $del_enu_id = $_POST['del_enu_id'];
 
-    $enuDelete = "DELETE from enumeration WHERE item_number = $del_enu_id'";
+    $enuDelete = "DELETE from enumeration WHERE item_number = '$del_enu_id'";
     $result = mysqli_query($conn, $enuDelete);
 
     if($result){

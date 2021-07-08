@@ -42,7 +42,7 @@ if (empty($_SESSION['id'])){
           <h1 style="text-transform:uppercase;"><?php echo $row['roomName']; ?></h1>
           <p>Room code: <?php echo $row['roomCode']; ?></p>
           
-          <a href="reportStuds.php"><button type="button" class="btn btn-dark m-2"><i class="fas fa-chalkboard-teacher"></i>&emsp;Progress</button></a>
+          <a href="reportStuds.php?next=<?php echo $row['roomCode']; ?>"><button type="button" class="btn btn-dark m-2"><i class="fas fa-chalkboard-teacher"></i>&emsp;Progress</button></a>
         </div>
 
         <div class="col-sm text-center">
@@ -87,10 +87,10 @@ if (empty($_SESSION['id'])){
 
         <div class="col-sm text-center" style="margin:auto;">
             <?php 
-            if ($result['status'] = "on"){ ?>
+            if ($schedrow['status'] != "finished"){ ?>
               <button type="button" class="btn btn-dark" id="<?php echo $schedrow['quiz_code']; ?>" disabled><i class="fas fa-play-circle"></i>&emsp;Launch quiz</button>
             <?php } else { ?>
-              <a href="viewArchives.php"><button type="button" class="btn btn-dark" id="<?php echo $schedrow['quiz_code']; ?>">View Quiz</button></a>
+              <a href="view-quiz.php?next=<?php echo $schedrow['quiz_code'];?>"><button type="button" class="btn btn-dark">View Quiz</button></a>
             <?php } ?>
         
         </div>

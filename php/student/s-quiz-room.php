@@ -79,8 +79,7 @@ if (isset($_GET['next'])) {
           <!-- quiz questions status update reason kung bakit di nag auto refresh sa question sa DONE na id-->
           <div class="aaa" id="done"></div>
 
-          <div class="row gx-5">
-
+          <div class="row gx-3">
             <div class="col-10">
               <div class="quiz rounded bg-light text-dark mt-3" id="waiting"></div><!-- display questions -->
             </div>
@@ -100,7 +99,6 @@ if (isset($_GET['next'])) {
 <script>
   quizLoad();
   schedFinished();
-
   // readyUpdate();
   // finishedStatus();
 </script>

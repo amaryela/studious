@@ -6,7 +6,7 @@ $userid = $_SESSION['id'];
 $quiz_code = $_SESSION["theCode"];
 ?>
 
-<h3 class="text-warning mb-3">PARTICIPANTS</h3>
+<h5 class="text-warning mb-3" style="font-size:1.8vw;">PARTICIPANTS</h5>
 
 <?php
 $query = "SELECT * FROM `quizaccess` WHERE q_code = '$quiz_code' ORDER BY `quizaccess`.`score` DESC " ;

@@ -7,12 +7,6 @@ $userid = $_SESSION['id'];
 if (empty($_SESSION['id'])){
   header('Location: ../../index.php');
 }
-
-if (isset($_GET['next'])) {
-  $id = $_GET['next'];
-
-  // $find = "SELECT enrolleduser.*, quizaccess.*, scheduledquizzes.* FROM enrolleduser JOIN quizaccess ON enrolleduser.enrolledUserID=quizaccess.quiz_takerID JOIN scheduledquizzes ON scheduledquizzes.quiz_roomcode = quizaccess.q_roomcode WHERE quizaccess.q_roomcode = $id";
-  // $show = mysqli_query($conn, $find);
 ?>
 
 <!doctype html>
@@ -46,21 +40,31 @@ if (isset($_GET['next'])) {
       </div>
 
     <div class="container jumbotron">
-      <div class="col">
-        <p>Name</p>
-      </div>
-          <?php
-          $find = "SELECT * FROM enrolleduser WHERE roomID = '$id'";
-          $go = mysqli_query($conn, $find);
-          while ($show = mysqli_fetch_array($go)) {
-          ?>
-      <div class="col">
-        <p><?php echo $show['enrolledUserFN'];?></p>
-      </div>
-      <?php } ?>
-
+      <table class="table table-dark table-hover text-center">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Quiz #1</th>
+            <th scope="col">Quiz #2</th>
+            <th scope="col">Average</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Ricca Manlangit</th>
+            <td>95</td>
+            <td>90</td>
+            <td>92.5</td>
+          </tr>
+          <tr>
+            <th scope="row">Grace Dimacali</th>
+            <td>90</td>
+            <td>95</td>
+            <td>92.5</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <?php } ?>
     <!--Bootstrap Bundle-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>

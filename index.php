@@ -67,7 +67,7 @@ if(isset ($_POST['login'])){
             <a class="nav-link rounded" aria-current="page" href="#features">Features</a>
           </li>
           <li class="nav-item nav-link-color">
-            <a class="nav-link rounded" aria-current="page" href="#footer">About us</a>
+            <a class="nav-link rounded" aria-current="page" href="#footer">About Us</a>
           </li>
           <li class="nav-item nav-link-color">
             <a data-bs-target="#loginModal" data-bs-toggle="modal" class="btn btn-dark" href="#loginModal">Login</a>
@@ -145,7 +145,7 @@ if(isset ($_POST['login'])){
   <div class="row">
     <div class="col-sm" style="padding:20px 0 0 20px; margin-top: 80px;">
       <p class="text-center texts">Create a room</p>
-      <p>Join a virtual room created by your professor to access all of your quizzess. Its customizable and you can create as many room as you want for free.</p>
+      <p>Join a virtual room created by your professor to access all of your quizzes. Its customizable and you can create as many room as you want for free.</p>
     </div>
     <div class="col-sm text-center" style="padding:30px;">
       <img src="img/undraw_teaching_f1cm.svg" alt="room" height="250px" width="250px">
@@ -158,14 +158,14 @@ if(isset ($_POST['login'])){
     </div>
     <div class="col-sm" style="padding:20px 0 0 20px; margin-top: 80px;">
       <p class="text-center texts">Take the quiz</p>
-      <p>Test your knowledge through online quizzess. Having slow connections? Don't worry you can ask your professor to wait for you.</p>
+      <p>Test your knowledge through online quizzes. Having slow connections? Don't worry you can ask your professor to wait for you.</p>
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm" style="padding:20px 0 0 20px; margin-top: 80px;">
       <p class="text-center texts">Track your progress</p>
-      <p>All your quizzess store in one place. A progress page that records all of your score is also available so you would know what subject to focus more.</p>
+      <p>All your quizzes store in one place. A progress page that records all of your score is also available so you would know what subject to focus more.</p>
     </div>
     <div class="col-sm text-center" style="padding:30px;">
       <img src="img/undraw_personal_file_222m.svg" alt="room" height="250px" width="250px">
@@ -181,12 +181,12 @@ if(isset ($_POST['login'])){
     <div class="row text-center text-md-left mt-3 pb-3">
       <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
         <h5 class="text-uppercase mb-4 font-weight-bold">The Studious</h5>
-        <p class="text-white">An interactive online quiz platform that helps students and professor on managing quizzess for their subjects.</p>
+        <p class="text-white">An interactive online quiz platform that helps students and professor on managing quizzes for their subjects.</p>
       </div>
 
       <hr class="w-100 clearfix d-md-none">
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-        <h5 class="text-uppercase mb-4 font-weight-bold">Products</h5>
+        <h5 class="text-uppercase mb-4 font-weight-bold">Resources</h5>
         <p><a href="https://getbootstrap.com/" class="text-warning" target="_blank">Bootstrap</a></p>
         <p><a href="https://fontawesome.com/" class="text-warning" target="_blank">Font Awesome</a></p>
         <p><a href="https://undraw.co/" class="text-warning" target="_blank">Undraw.co</a></p>
@@ -194,7 +194,7 @@ if(isset ($_POST['login'])){
 
       <hr class="w-100 clearfix d-md-none">
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-        <h5 class="text-uppercase mb-4 font-weight-bold">Contact</h5>
+        <h5 class="text-uppercase mb-4 font-weight-bold">Contacts</h5>
         <p class="text-white"><i class="fas fa-home mr-3"></i>&ensp;Bulacan State University PH</p>
         <p class="text-white"><i class="fas fa-envelope mr-3"></i>&ensp;thestudious@gmail.com</p>
         <p class="text-white"><i class="fas fa-phone mr-3"></i>&ensp;+639 123 456 789</p>

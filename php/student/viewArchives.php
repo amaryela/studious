@@ -9,11 +9,14 @@ if (empty($_SESSION['id'])){
 }
 
   if (isset($_GET['next'])) {
-        $id = $_GET['next'];
+    $id = $_GET['next'];
 
-        $sql = "SELECT * FROM room WHERE roomCode = '$id'";
-        $results = mysqli_query($conn, $sql);
-  }  
+    $sql = "SELECT * FROM room WHERE roomCode = '$id'";
+    $results = mysqli_query($conn, $sql);
+
+    $join = "SELECT quizaccess.*, scheduledquizzes.* FROM quizaccess JOIN scheduledquizzes ON quizaccess.q_code=scheduledquizzes.quiz_code WHERE scheduledquizzes.quiz_roomcode = '$id' AND quizaccess.quiz_takerID='$userid' AND scheduledquizzes.status='finished' ORDER BY quiz_date DESC";
+    $result = mysqli_query($conn, $join);
+  }
 ?>
 
 <!doctype html>
@@ -30,7 +33,6 @@ if (empty($_SESSION['id'])){
 
     <title>studious | room for all your quizzes</title>
     <link rel="stylesheet" type="text/css" href="../../css/rooms.css">
-
   </head>
   <body>
     <?php include('../include/nav-stud.php'); ?>
@@ -54,8 +56,8 @@ if (empty($_SESSION['id'])){
           ?>
 
           <p>Professor: <?php echo $p_row['uFirstName'] . " " . $p_row['uLastName']; }?></p>
-          <a href="studProgress.php?next=<?php echo $id; ?>"><button type="button" class="btn btn-dark">
-          <i class="fas fa-check-double"></i>&ensp;Quiz History</button></a>
+          <!-- <a href="studProgress.php?next=<?php echo $id; ?>"><button type="button" class="btn btn-dark">
+          <i class="fas fa-check-double"></i>&ensp;Quizzess</button></a> -->
         </div>
       </div>
       <br>
@@ -99,52 +101,29 @@ if (empty($_SESSION['id'])){
 
     <div class="container jumbotron" style="width:50%;">
 
-    <?php 
-        $rcodes = $row['roomCode'];
-        //joing two tables
-        $go = "SELECT room.*, enrolleduser.*, scheduledquizzes.* FROM room JOIN enrolleduser ON room.roomCode=enrolleduser.roomID JOIN scheduledquizzes ON scheduledquizzes.quiz_roomcode = enrolleduser.roomID WHERE enrolleduser.enrolledUserID = '$userid' AND room.roomCode = '$rcodes' AND scheduledquizzes.status !='finished'";
-        $join = mysqli_query($conn, $go);
+        <?php if (mysqli_num_rows($result)==0) { ?>
+          <div class="col text-center">
+            <p style="font-size:20px;">No finished quiz in this subject.</p>
+          </div>
+        <?php } else{ 
+          while ($show = mysqli_fetch_array($result)) {?>
 
-        if (mysqli_num_rows($join) == 0) { ?>
-          <div class="text-center">
-            <p style="font-size:20px;">No scheduled quiz yet. Browse quiz history.</p>
-            <img src="../../img/undraw_Notify_re_65on (stud).svg" alt="icon-no-room" height="300px">
+       <div class="row justify-content-md-center records">
+          <div class="col-sm p-3 ms-3" style="margin:auto;">
+            <h3 class="mb-3"><?php echo $show['quiz_name'];?></h3>
+            <p class="m-0" style="font-size:15px;">Scheduled by: <?php echo $show['quiz_date'];?></p>
           </div>
-        <?php } else {
-          while ($data = mysqli_fetch_array($join)) { ?>
-
-        <div class="row records">
-          <div class="col-sm ps-3 pt-3">
-            <h3><?php echo $data['quiz_name']; ?></h3>
-            <p style="font-size:15px;"><?php echo date('F d, Y', strtotime($data['quiz_date'])).
-            "&emsp;-&emsp;".date('g:i a', strtotime($data['quiz_time'])); ?></p>
+          <div class="col-sm text-center m-auto">
+            <a href="view-quiz.php?next=<?php echo $show['quiz_code']; ?>"><button type="button" class="btn btn-dark" id="<?php echo $schedrow['quiz_code']; ?>">View Quiz</button></a>
+            <p class="m-1" style="font-size:15px;">Score: <?php echo $show['score'];?></p>
           </div>
-  
-          <div class="col-sm text-center" style="margin:auto;">
-            <form action="save-to-participants.php" method="post">
-              <input type="hidden" name="qcode" value="<?php echo $data['quiz_code']; ?>">
-              <input type="hidden" name="user" value="<?php echo  $userid; ?>">
-              <input type="hidden" name="schedID" value="<?php echo $data['id']; ?>">
-              <input type="hidden" name="rcode" value="<?php echo $row['roomCode']; ?>">
-  
-  
-              <?php if ($data['status'] != "finished"){ ?>
-                <button type="submit" class="btn btn-dark" name="takequiz" <?php if ($data['status'] == "set"){ ?> disabled <?php } ?> ><i class="fas fa-play-circle"></i>&ensp;Take quiz</button>
-              <?php } ?>
-  
-              <!-- <button type="submit" class="btn btn-dark" name="takequiz"><i class="fas fa-play-circle"></i>&ensp;Take quiz</button> -->
-            </form>
-          </div>
-  
         </div><br>
-        <?php  } } ?>
+        <?php } } ?> <!-- end row loop -->
 
-</div>
+            
+      </div>
 
 <?php } ?> <!-- end for while above quizDB -->
-
-
-
 
     <!--Bootstrap Bundle-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

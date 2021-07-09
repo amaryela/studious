@@ -44,7 +44,7 @@ if (isset($_GET['next'])) {
 
     <div class="container jumbotron">
     <?php
-      $find = mysqli_query($conn, "SELECT * FROM records WHERE room_code = '$id'");
+      $find = mysqli_query($conn, "SELECT * FROM records WHERE room_code = '$id' LIMIT 1");
         if (mysqli_num_rows($find) == 0) { ?>
            <div class="text-center">
               <p style="font-size:20px;">No records yet.</p>

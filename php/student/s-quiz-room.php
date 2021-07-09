@@ -12,11 +12,11 @@ if (empty($_SESSION['id'])){
 
 if (isset($_GET['next'])) {
   $id = $_GET['next'];
-  $_SESSION['sched_id'] =$id;
+  $_SESSION['sched_id'] = $id;
 
   $statusUpdate = mysqli_query($conn, "SELECT * FROM `scheduledquizzes` WHERE id ='$id'");
   while ($stts_up = mysqli_fetch_array($statusUpdate)) {
-  $_SESSION["status"] = $stts_up['status']; 
+    $_SESSION["status"] = $stts_up['status']; 
 
           if ($_SESSION["status"] == "finished"){
             $qcode = $stts_up['quiz_code'];
@@ -42,35 +42,31 @@ if (isset($_GET['next'])) {
           }
 
           if ($_SESSION["status"] == "waiting"){ ?>
-
-                  <script>
-                  schedUpdate();
-                  </script><?php 
+            <script>
+            schedUpdate();
+            </script><?php 
           } 
 
           if ($_SESSION["status"] == "on-going"){ ?>
-
-                  <script>
-                  stopReloadSched();
-                  </script>
+            <script>
+            stopReloadSched();
+            </script>
           <?php
-
-              $in = $_SESSION['qstn_id'];
-              $statusUpdate = mysqli_query($conn, "SELECT * FROM `questions` WHERE id ='$in'");
-                      while ($stts_row = mysqli_fetch_array($statusUpdate)){
-                      $question_status = $stts_row['status']; 
-                       
-              if($question_status == "done"){ ?> 
-                      <script>
-                      stopDoneStatus();
-                      </script>
-              <?php } else{ ?>
-                      <script>
-                      doneUpdate();
-                      </script>
-              <?php }
-      }
-    } 
+            $in = $_SESSION['qstn_id'];
+            $statusUpdate = mysqli_query($conn, "SELECT * FROM `questions` WHERE id ='$in'");
+              while ($stts_row = mysqli_fetch_array($statusUpdate)){
+                $question_status = $stts_row['status']; 
+                  if($question_status == "done"){ ?> 
+                  <script>
+                  stopDoneStatus();
+                  </script>
+                <?php } else{ ?>
+                <script>
+                  doneUpdate();
+                </script>
+                <?php }
+              }
+          } 
   }
 }
 ?>

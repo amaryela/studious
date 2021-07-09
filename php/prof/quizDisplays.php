@@ -99,7 +99,7 @@ if(isset($_POST['del_id'])){
 ?>
     <h5 class="modal-title" style="margin-bottom:20px;">CONFIRM DELETE</h5>
     <p style="font-size:18px;">Are you sure you want to delete this item?</p>
-    <input type="number" name="del_id" value="<?php echo $mc['item_number'];?>">
+    <input type="hidden" name="del_id" value="<?php echo $mc['item_number'];?>">
 
 <?php
 }
@@ -170,7 +170,7 @@ if(isset($_POST['del_iden_id'])){
 ?>
     <h5 class="modal-title" style="margin-bottom:20px;">CONFIRM DELETE</h5>
     <p style="font-size:18px;">Are you sure you want to delete this item?</p>
-    <input type="number" name="del_iden_id" value="<?php echo $iden['item_number'];?>">
+    <input type="hidden" name="del_iden_id" value="<?php echo $iden['item_number'];?>">
 
 <?php
 }
@@ -306,7 +306,7 @@ if(isset($_POST['del_enu_id'])){
 ?>
     <h5 class="modal-title" style="margin-bottom:20px;">CONFIRM DELETE</h5>
     <p style="font-size:18px;">Are you sure you want to delete this item?</p>
-    <input type="number" name="del_enu_id" value="<?php echo $enu['item_number'];?>">
+    <input type="hidden" name="del_enu_id" value="<?php echo $enu['item_number'];?>">
 
 <?php
     }

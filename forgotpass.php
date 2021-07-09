@@ -131,7 +131,7 @@ else{
     <form method="post">
 
       <div class="email-span">
-        <p style="font-size:20px;">Please enter the email you register</p>
+        <p style="font-size:20px;">Please enter the email you registered</p>
 
         <div class="container" style="width:350px;" id="error">
           <?php if (isset($_GET['error'])) { ?>

@@ -62,8 +62,12 @@ if (empty($_SESSION['id'])){
 
       <div class="row border border-3 border-warning rounded p-2">
       <?php
-          $count = mysqli_query($conn, "SELECT * FROM scheduledquizzes WHERE quiz_roomcode = '$id' AND status = 'finished'");
+          $count = mysqli_query($conn, "SELECT * FROM records WHERE room_code = '$id' AND user_id = '$userid'");
           $num_total = mysqli_num_rows($count);
+          $show = mysqli_fetch_array($count);
+
+          // $count = mysqli_query($conn, "SELECT * FROM scheduledquizzes WHERE quiz_roomcode = '$id' AND status = 'finished'");
+          // $num_total = mysqli_num_rows($count);
 
           $miss = mysqli_query($conn, "SELECT * FROM quizaccess WHERE q_roomcode = '$id' AND quiz_takerID = '$userid'");
           $num_miss = mysqli_num_rows($miss);
@@ -76,10 +80,6 @@ if (empty($_SESSION['id'])){
           }
           // $miss = mysqli_query($conn, "SELECT * FROM quizaccess WHERE q_roomcode = '$id' AND score = '' AND quiz_takerID = '$userid'");
           // $num_miss = mysqli_num_rows($miss);
-
-          $res = mysqli_query($conn, "SELECT sum(point) FROM questions WHERE quiz_code ='$id'");
-          $rr = mysqli_fetch_row($res);
-          $sum = $rr[0];
       ?>
 
         <div class="col-sm text-center">
@@ -92,10 +92,18 @@ if (empty($_SESSION['id'])){
           <h5>Total Quiz</h5>
         </div>
 
-         <div class="col-sm text-center">
+        <?php if (empty($show['percentage'])){ ?>
+          <div class="col-sm text-center">
           <h2>0</h2>
           <h5>Average Grade</h5>
         </div>
+
+        <?php } else { ?>
+         <div class="col-sm text-center">
+          <h2><?php echo $show['percentage'];?></h2>
+          <h5>Average Grade</h5>
+        </div>
+        <?php } ?>
 
       </div>
     </div>

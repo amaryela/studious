@@ -435,7 +435,7 @@ elseif ($row['question_template'] == "enumeration") {
             <p class="m-2 p-2 choices chh"> 
             <input id="en5" class="opt5" type="checkbox" value="<?php echo $enu['choice_e'];?> " name="enu5">&nbsp;&nbsp; <?php echo $enu['choice_e']; 
         } ?></p>
-
+    <br>
     <input id="text1" type="hidden" name="" value="<?php echo $enu['choice_a']; ?>">
     <input id="text2" type="hidden" name="" value="<?php echo $enu['choice_b']; ?>">
     <input id="text3" type="hidden" name="" value="<?php echo $enu['choice_c']; ?>">

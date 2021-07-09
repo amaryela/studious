@@ -19,13 +19,32 @@ if(isset($_POST['join'])){
   $email = $_POST['email'];
   $role = $_POST['role'];
 
-$query = "INSERT INTO enrolleduser (roomID, enrolledUserID, enrolledUserFN, enrolledUserLN, enrolledEmail, enrolledRole) VALUES ('".$code."','".$userid."','".$fname."','".$lname."','".$email."','".$role."')";
+  $get = "SELECT * FROM room WHERE roomCode = '$code'";
+  $go = mysqli_query($conn, $get);
+
+  if (mysqli_num_rows($go) > 0){
+    $find = "SELECT * FROM enrolleduser WHERE roomID = '$code' AND enrolledUserID = '$userid'";
+    $check = mysqli_query($conn,$find);
+ 
+     if (mysqli_num_rows($check) > 0){
+       header("Location: studHome.php?error=Room is already in your account.");
+       exit();
+     }
+
+     else{
+      $query = "INSERT INTO enrolleduser (roomID, enrolledUserID, enrolledUserFN, enrolledUserLN, enrolledEmail, enrolledRole) VALUES ('".$code."','".$userid."','".$fname."','".$lname."','".$email."','".$role."')";
 
         $check_reg = mysqli_query($conn,$query);
         if($check_reg){
           header('Location:studHome.php');
         }
     }
+  }
+    else{
+      header("Location: studHome.php?error=Room code doesn't exist");
+      exit();
+    }
+  }
 ?>
 
 <!doctype html>
@@ -90,7 +109,7 @@ $query = "INSERT INTO enrolleduser (roomID, enrolledUserID, enrolledUserFN, enro
             <input type="hidden" name="email" value="<?php echo $row['uEmail']; ?>">
             <input type="hidden" name="role" value="<?php echo $row['uRole']; ?>">
 
-            <input type="text" class="form-control" name="roomcode" placeholder="Enter Code" required="required">
+            <input type="text" class="form-control" name="roomcode" placeholder="Enter Code" required>
           </div><br>
 
           <div class="text-center form-group">
@@ -104,6 +123,16 @@ $query = "INSERT INTO enrolleduser (roomID, enrolledUserID, enrolledUserFN, enro
 </div>
 
       <section id="rooms">
+
+<div class="container" style="width:350px;" id="error">
+  <?php if (isset($_GET['error'])) { ?>
+      <div class="alert alert-danger d-flex align-items-center fade show" role="alert">
+        <i class="fas fa-exclamation-triangle"></i>&emsp;
+        <?php echo $_GET['error']; ?>
+      </div>
+  <?php } ?>
+</div>
+
         <div class="container">
           <?php 
               $join = "SELECT room.*, enrolleduser.* FROM room JOIN enrolleduser ON room.roomCode=enrolleduser.roomID WHERE enrolleduser.enrolledUserID='$userid' AND room.status = 'on'";
@@ -153,6 +182,12 @@ $query = "INSERT INTO enrolleduser (roomID, enrolledUserID, enrolledUserFN, enro
           header1.classList.remove("cus-nav")
         }
       });
+
+    setTimeout(fade_out, 1500);
+      function fade_out() {
+      $("#error").fadeOut().empty();
+      $("#success").fadeOut().empty();
+    };
     </script>
   
   </body>

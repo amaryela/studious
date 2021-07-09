@@ -51,7 +51,7 @@ if (isset($_GET['next'])) {
               <img src="../../img/undraw_Notify_re_65on.svg" alt="icon-no-room" height="300px">
             </div>
       <?php } else {
-        while($row = mysqli_fetch_array($find)) {?>
+        while($row = mysqli_fetch_array($find)) { ?>
       <table class="table table-dark table-hover text-center">
         <thead>
           <tr>
@@ -63,15 +63,16 @@ if (isset($_GET['next'])) {
         </thead>
         <tbody>
           <tr>
-            <td>Rose Gard</td>
+            <td>Ricca Manlangit</td>
             <td><?php echo $row['score']."/".$row['total'];?></td>
             <td><?php echo $row['percentage'];?></td>
             <td><?php echo $row['percentage'];?></td>
           </tr>
-          <?php } } }?>
+          <?php } } ?>
         </tbody>
       </table>
     </div>
+    <?php } ?>
     <!--Bootstrap Bundle-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>

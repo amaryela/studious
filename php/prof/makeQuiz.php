@@ -157,10 +157,10 @@ if (empty($_SESSION['id'])){
             <input type="file" name="imgIDEN" accept="image/*">
         </div><br>
 
-        <textarea name="idenQuest" required></textarea><br><br>
+        <textarea name="idenQuest" required placeholder="Type your question here"></textarea><br><br>
 
         <div class="choices" style="text-align:left;">
-            <p class="fs-5">Answer: <input type="text" name="idenAns" required></p>
+            <p class="fs-5">Answer: <input type="text" name="idenAns" required placeholder="Type your question here"></p>
         </div>
 
         <div class="choices" style="text-align:right;">
@@ -193,33 +193,33 @@ if (empty($_SESSION['id'])){
             <input type="file" name="imgENU" accept="image/*">
         </div><br>
 
-        <textarea name="eqfield"></textarea><br><br>
+        <textarea name="eqfield" required placeholder="Type your question here"></textarea><br><br>
        
         <div class="choices" style="text-align:left;">
             <input class="optHidden1" type="hidden" value="not" name="enu1">
             <input class="opt1" type="checkbox" value="correct" name="enu1">&nbsp;&nbsp;
-            <input type="text" name="e1" required><br>
+            <input type="text" name="e1" required placeholder="Type your question here"><br>
 
             <input class="optHidden2" type="hidden" value="not" name="enu2">
             <input class="opt2" type="checkbox" value="correct" name="enu2">&nbsp;&nbsp;
-            <input type="text" name="e2" required><br>
+            <input type="text" name="e2" required placeholder="Type your question here"><br>
 
         <div class="enum3">
             <input class="optHidden3" type="hidden" value="not" name="enu3">
             <input class="opt3" type="checkbox" value="correct" name="enu3">&nbsp;&nbsp;
-            <input type="text" name="e3"><br>
+            <input type="text" name="e3" placeholder="Type your question here"><br>
         </div>
 
         <div class="enum4">
             <input class="optHidden4" type="hidden" value="not" name="enu4">
             <input class="opt4" type="checkbox" value="correct" name="enu4">&nbsp;&nbsp;
-            <input type="text" name="e4"><br>
+            <input type="text" name="e4" placeholder="Type your question here"><br>
         </div>
 
         <div class="enum5">
             <input class="optHidden5" type="hidden" value="not" name="enu5">
             <input class="opt5" type="checkbox" value="correct" name="enu5">&nbsp;&nbsp;
-            <input type="text" name="e5"><br>
+            <input type="text" name="e5" placeholder="Type your question here"><br>
         </div>
         </div>
 

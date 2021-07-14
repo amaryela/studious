@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include '../include/config.php';
 
@@ -9,12 +10,14 @@ if (empty($_SESSION['id'])){
 }
 
   if (isset($_GET['next'])) {
-        $id = $_GET['next'];
+    $id = $_GET['next'];
 
-        $sql = "SELECT * FROM room WHERE roomCode = '$id'";
-        $results = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM room WHERE roomCode = '$id'";
+    $results = mysqli_query($conn, $sql);
   }  
+  
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -131,11 +134,49 @@ if (empty($_SESSION['id'])){
             <p style="font-size:15px;"><?php echo date('F d, Y', strtotime($data['quiz_date'])).
             "&emsp;-&emsp;".date('g:i a', strtotime($data['quiz_time'])); ?></p>
           </div>
+          
+<?php
+if(isset($_POST['takequiz'])){
+	$quiz_code = $_POST['qcode'];
+	$room_code = $_POST['rcode'];
+	$user_id =  $_POST['user'];
+	$sq_id =  $_POST['schedID'];
+	
+  $_SESSION['sched_id'] = $sq_id;
+	$_SESSION['room_code'] = $room_code;
+	$_SESSION["theCode"] = $quiz_code;
+
+
+		
+		$checkExist = mysqli_query($conn, "SELECT * FROM  `quizaccess` WHERE quiz_takerID = '$user_id' AND q_code = '$quiz_code'");
+		if ($ce = mysqli_num_rows($checkExist) == 1){
+			echo "<script>window.location='s-quiz-room.php?next=$sq_id';</script>";
+		}	
+	  else {
+      $resultU = "SELECT * FROM `users` WHERE `ID` = '$user_id'";
+      $check_u = mysqli_query($conn, $resultU);
+      $rowu = mysqli_fetch_array($check_u);
+      $uFName =  $rowu['uFirstName'];
+      $uLName = $rowu['uLastName']; 
+      $uE = $rowu['uEmail'];
+      
+      $score = 0;
+      $status = "none";
+          
+    $resultQA = "INSERT INTO `quizaccess`(`q_code`, `q_roomcode`, `quiz_takerID`, `quiz_takerFName`, `quiz_takerLName`, `quiz_takerEmail`, `score`, `status`) VALUES ('".$quiz_code."','".$room_code."','".$user_id."','".$uFName."','".$uLName."',  '".$uE."',  '".$score."',  '".$status."')";
+    $check_QA = mysqli_query($conn , $resultQA);
+    
+    if($check_QA){
+      echo "<script>window.location='s-quiz-room.php?next=$sq_id';</script>";
+    }
+  }
+}
+?>
   
           <div class="col-sm text-center" style="margin:auto;">
-            <form action="save-to-participants.php" method="post">
+            <form  method="post">
               <input type="hidden" name="qcode" value="<?php echo $data['quiz_code']; ?>">
-              <input type="hidden" name="user" value="<?php echo  $userid; ?>">
+              <input type="hidden" name="user" value="<?php echo $userid; ?>">
               <input type="hidden" name="schedID" value="<?php echo $data['id']; ?>">
               <input type="hidden" name="rcode" value="<?php echo $row['roomCode']; ?>">
   

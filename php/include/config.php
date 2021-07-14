@@ -11,12 +11,11 @@ $dbpass 	= "1n00OOSXww";
 // $dbname 	= "root"; 
 // $dbpass 	= "";
 
-// internet hosting
-// $servername = ""; 
-// $database 	= ""; 
-// $dbname 	= ""; 
-// $dbpass 	= "";
-
+// infinityfree
+// $servername = "localhost"; 
+// $database 	= "id17231359_studious"; 
+// $dbname 	= "id17231359_studiousdb"; 
+// $dbpass 	= "04CfUeh(DxAAalms";
 
 
 $conn = mysqli_connect($servername, $dbname,
